@@ -7,6 +7,6 @@ namespace Core
     public class SkinSeries
     {
         public int ID;
-        public List<SkinData> skinDatas;
+        public List<SkinData> skinDatas = new List<SkinData>();
     }
 }

@@ -9,16 +9,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02bbaebe948ea224b94ba8e01d86b690, type: 3}
+  m_Script: {fileID: 11500000, guid: c156d88a5b1994d4e85efdd84489bf56, type: 3}
   m_Name: BallDatabase
   m_EditorClassIdentifier: 
   ballDatas:
   - ID: 1
     ColliderRadius: 0.256
-    SeriesID: 1
-    SkinID: 1
-  skinSeries:
-  - ID: 1
-    skinDatas:
-    - ID: 1
-      Sprite: {fileID: 21300000, guid: 917799ae321bfc44bb858e99f19d5664, type: 3}
+    PixelsPerUnit: 1000
+  - ID: 2
+    ColliderRadius: 0.32
+    PixelsPerUnit: 800
+  - ID: 3
+    ColliderRadius: 0.3657143
+    PixelsPerUnit: 700
+  - ID: 4
+    ColliderRadius: 0.4266667
+    PixelsPerUnit: 600
+  - ID: 5
+    ColliderRadius: 0.512
+    PixelsPerUnit: 500
+  - ID: 6
+    ColliderRadius: 0.5688889
+    PixelsPerUnit: 450
+  - ID: 7
+    ColliderRadius: 0.6826667
+    PixelsPerUnit: 375
+  - ID: 8
+    ColliderRadius: 0.7314286
+    PixelsPerUnit: 350
+  - ID: 9
+    ColliderRadius: 0.8533334
+    PixelsPerUnit: 300
+  - ID: 10
+    ColliderRadius: 1.024
+    PixelsPerUnit: 250

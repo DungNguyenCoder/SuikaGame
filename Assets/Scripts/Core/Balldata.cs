@@ -7,7 +7,6 @@ namespace Core
     {
         public int ID;
         public float ColliderRadius;
-        public int SeriesID;
-        public int SkinID;
+        public float PixelsPerUnit = 100f;
     }
 }

@@ -6,7 +6,7 @@ namespace Core
     [Serializable]
     public class SkinData
     {
-        public int ID;
+        public int BallID;
         public Sprite Sprite;
     }
 }

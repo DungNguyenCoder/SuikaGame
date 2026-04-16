@@ -14,14 +14,17 @@ namespace Controllers
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CircleCollider2D>();
         }
-        public void Setup(BallData data, BallDatabase database)
+
+        public void Setup(BallData data, SkinDatabase skinDatabase, int seriesID)
         {
+            if (data == null) return;
+
             _data = data;
 
-            if (database != null)
+            if (_sr != null)
             {
-                var sprite = database.GetSkinSprite(data.SeriesID, data.SkinID);
-                if (_sr != null && sprite != null) _sr.sprite = sprite;
+                var sprite = skinDatabase != null ? skinDatabase.GetSkinSprite(seriesID, data.ID) : null;
+                _sr.sprite = sprite;
             }
 
             if (_col != null)

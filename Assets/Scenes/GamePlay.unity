@@ -842,7 +842,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPool: {fileID: 1888706980}
-  ballDatabase: {fileID: 11400000, guid: 8d38912417357774fa7a877debad0825, type: 2}
+  ballCoreDatabase: {fileID: 11400000, guid: 738b9e6380d400f47be1cf499404786e, type: 2}
+  skinDatabase: {fileID: 11400000, guid: a8be227e888f20a489305d0be0af81b1, type: 2}
+  spawnBallID: 1
+  randomMinBallID: 1
+  randomMaxBallID: 3
+  activeSkinSeriesID: 1
   spawnCooldown: 1
 --- !u!4 &1610687617
 Transform:
@@ -1005,7 +1010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2071049314
 MonoBehaviour:
   m_ObjectHideFlags: 0

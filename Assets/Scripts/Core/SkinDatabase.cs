@@ -3,18 +3,15 @@ using UnityEngine;
 
 namespace Core
 {
-    [System.Obsolete("Use BallCoreDatabase + SkinDatabase instead.")]
-    [CreateAssetMenu(menuName = "SuikaGame/Data/Legacy/Ball")]
-    public class BallDatabase : ScriptableObject
+    [CreateAssetMenu(menuName = "SuikaGame/Data/Skin")]
+    public class SkinDatabase : ScriptableObject
     {
-        public List<BallData> ballDatas = new List<BallData>();
         public List<SkinSeries> skinSeries = new List<SkinSeries>();
 
-        // Legacy helper kept for migration from the old combined database.
         public Sprite GetSkinSprite(int seriesID, int ballID)
         {
             var series = skinSeries.Find(s => s.ID == seriesID);
-            if (series == null) return null;
+            if (series == null || series.skinDatas == null) return null;
 
             var skin = series.skinDatas.Find(s => s.BallID == ballID);
             return skin != null ? skin.Sprite : null;

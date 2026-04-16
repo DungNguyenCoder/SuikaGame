@@ -9,7 +9,12 @@ namespace Pools
     public class BallSpawner : MonoBehaviour
     {
         [SerializeField] private BallPool ballPool;
-        [SerializeField] private BallDatabase ballDatabase;
+        [SerializeField] private BallCoreDatabase ballCoreDatabase;
+        [SerializeField] private SkinDatabase skinDatabase;
+        [SerializeField] private int spawnBallID = 1;
+        [SerializeField] private int randomMinBallID = 1;
+        [SerializeField] private int randomMaxBallID = 3;
+        [SerializeField] private int activeSkinSeriesID = 1;
         [SerializeField] private float spawnCooldown = 1f;
         private bool _isCoolingDown = false;
 
@@ -28,12 +33,11 @@ namespace Pools
                 ball.transform.localPosition = Vector3.zero;
             }
 
-            BallData data = null;
-            if (ballDatabase != null && ballDatabase.ballDatas != null && ballDatabase.ballDatas.Count > 0)
-                data = ballDatabase.ballDatas[0];
+            RandomizeSpawnBallID();
+            BallData data = ResolveBallData();
 
             if (data != null)
-                ball.Setup(data, ballDatabase);
+                ball.Setup(data, skinDatabase, activeSkinSeriesID);
             // start cooldown after manual spawn so subsequent spawns/releases wait
             StartCooldown().Forget();
             return ball;
@@ -74,14 +78,41 @@ namespace Pools
                 ball.transform.localPosition = Vector3.zero;
             }
 
-            BallData data = null;
-            if (ballDatabase != null && ballDatabase.ballDatas != null && ballDatabase.ballDatas.Count > 0)
-                data = ballDatabase.ballDatas[0];
+            RandomizeSpawnBallID();
+            BallData data = ResolveBallData();
 
             if (data != null)
-                ball.Setup(data, ballDatabase);
+                ball.Setup(data, skinDatabase, activeSkinSeriesID);
 
             return ball;
+        }
+
+        public void SetSpawnBallID(int ballID)
+        {
+            spawnBallID = ballID;
+        }
+
+        public void SetActiveSkinSeriesID(int seriesID)
+        {
+            activeSkinSeriesID = seriesID;
+        }
+
+        private void RandomizeSpawnBallID()
+        {
+            int minID = Mathf.Min(randomMinBallID, randomMaxBallID);
+            int maxID = Mathf.Max(randomMinBallID, randomMaxBallID);
+            spawnBallID = UnityEngine.Random.Range(minID, maxID + 1);
+        }
+
+        private BallData ResolveBallData()
+        {
+            if (ballCoreDatabase == null || ballCoreDatabase.ballDatas == null || ballCoreDatabase.ballDatas.Count == 0)
+                return null;
+
+            var ballData = ballCoreDatabase.GetBallData(spawnBallID);
+            if (ballData != null) return ballData;
+
+            return ballCoreDatabase.ballDatas[0];
         }
 
         private async UniTask StartCooldown()

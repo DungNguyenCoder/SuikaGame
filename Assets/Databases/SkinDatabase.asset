@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e049121a177405f46bf7cdded4966607, type: 3}
+  m_Name: SkinDatabase
+  m_EditorClassIdentifier: 
+  skinSeries:
+  - ID: 1
+    skinDatas:
+    - BallID: 1
+      Sprite: {fileID: 21300000, guid: 25d470c75563bea4389f044fa236ec65, type: 3}
+    - BallID: 2
+      Sprite: {fileID: 21300000, guid: 02d5f6a465eeead4b9b244c5c1ecd387, type: 3}
+    - BallID: 3
+      Sprite: {fileID: 21300000, guid: 1b8adfd9fa94c0143b9779b378d2921e, type: 3}
+    - BallID: 4
+      Sprite: {fileID: 21300000, guid: 22b4b49384513df47ac375f820e96a2b, type: 3}
+    - BallID: 5
+      Sprite: {fileID: 21300000, guid: 60b29403c47ca4c46bbaf017c03e06e0, type: 3}
+    - BallID: 6
+      Sprite: {fileID: 21300000, guid: 8687307dee20f0745ac8e9664a712480, type: 3}
+    - BallID: 7
+      Sprite: {fileID: 21300000, guid: a593c9fdadb0b9a42b528bdda3d04530, type: 3}
+    - BallID: 8
+      Sprite: {fileID: 21300000, guid: 1974f175bf1a7f3458691af8bfbf6b0a, type: 3}
+    - BallID: 9
+      Sprite: {fileID: 21300000, guid: 290d3db2446658d4bb3bf5e3e2b48919, type: 3}
+    - BallID: 10
+      Sprite: {fileID: 21300000, guid: 2cdeb8423658fc8489aae883d2294887, type: 3}
