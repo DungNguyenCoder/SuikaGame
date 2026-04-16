@@ -14,32 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballDatas:
   - ID: 1
-    ColliderRadius: 0.256
-    PixelsPerUnit: 1000
+    ColliderRadius: 0.2133333
+    PixelsPerUnit: 600
   - ID: 2
-    ColliderRadius: 0.32
-    PixelsPerUnit: 800
+    ColliderRadius: 0.256
+    PixelsPerUnit: 500
   - ID: 3
-    ColliderRadius: 0.3657143
-    PixelsPerUnit: 700
+    ColliderRadius: 0.32
+    PixelsPerUnit: 400
   - ID: 4
     ColliderRadius: 0.4266667
-    PixelsPerUnit: 600
-  - ID: 5
-    ColliderRadius: 0.512
-    PixelsPerUnit: 500
-  - ID: 6
-    ColliderRadius: 0.5688889
-    PixelsPerUnit: 450
-  - ID: 7
-    ColliderRadius: 0.6826667
-    PixelsPerUnit: 375
-  - ID: 8
-    ColliderRadius: 0.7314286
-    PixelsPerUnit: 350
-  - ID: 9
-    ColliderRadius: 0.8533334
     PixelsPerUnit: 300
-  - ID: 10
-    ColliderRadius: 1.024
+  - ID: 5
+    ColliderRadius: 0.4654545
+    PixelsPerUnit: 275
+  - ID: 6
+    ColliderRadius: 0.512
     PixelsPerUnit: 250
+  - ID: 7
+    ColliderRadius: 0.5688889
+    PixelsPerUnit: 225
+  - ID: 8
+    ColliderRadius: 0.64
+    PixelsPerUnit: 200
+  - ID: 9
+    ColliderRadius: 0.7314286
+    PixelsPerUnit: 175
+  - ID: 10
+    ColliderRadius: 0.8533334
+    PixelsPerUnit: 150
