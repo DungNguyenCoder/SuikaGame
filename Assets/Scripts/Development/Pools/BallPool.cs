@@ -48,6 +48,7 @@ namespace Pools
         public void ReturnPool(Ball tile)
         {
             if (!_tilePool.Contains(tile)) return;
+            tile.PrepareForPool();
             tile.gameObject.SetActive(false);
             tile.transform.SetParent(transform);
         }

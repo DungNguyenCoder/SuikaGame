@@ -2,6 +2,7 @@ using System;
 using Controllers;
 using Core;
 using Cysharp.Threading.Tasks;
+using Development.Managers;
 using UnityEngine;
 
 namespace Pools
@@ -11,6 +12,7 @@ namespace Pools
         [SerializeField] private BallPool ballPool;
         [SerializeField] private BallCoreDatabase ballCoreDatabase;
         [SerializeField] private SkinDatabase skinDatabase;
+        [SerializeField] private Transform dynamicRoot;
         [SerializeField] private int spawnBallID = 1;
         [SerializeField] private int randomMinBallID = 1;
         [SerializeField] private int randomMaxBallID = 3;
@@ -18,27 +20,30 @@ namespace Pools
         [SerializeField] private float spawnCooldown = 1f;
         private bool _isCoolingDown = false;
 
+        private void OnEnable()
+        {
+            EventManager.SameIdCollision += HandleSameIdCollision;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.SameIdCollision -= HandleSameIdCollision;
+        }
+
         public Ball SpawnAndAttach(Transform parent)
         {
-            if (ballPool == null) return null;
-            // Enforce cooldown between manual spawns using UniTask delay (non-blocking)
             if (_isCoolingDown) return null;
 
             Ball ball = ballPool.GetBall();
-            if (ball == null) return null;
-
-            if (parent != null)
-            {
-                ball.transform.SetParent(parent);
-                ball.transform.localPosition = Vector3.zero;
-            }
+        
+            ball.transform.SetParent(parent);
+            ball.transform.localPosition = Vector3.zero;
 
             RandomizeSpawnBallID();
             BallData data = ResolveBallData();
 
             if (data != null)
                 ball.Setup(data, skinDatabase, activeSkinSeriesID);
-            // start cooldown after manual spawn so subsequent spawns/releases wait
             StartCooldown().Forget();
             return ball;
         }
@@ -51,10 +56,9 @@ namespace Pools
 
             if (oldBall != null)
             {
-                oldBall.Release();
+                oldBall.Release(dynamicRoot);
                 oldBall = null;
-
-                // wait before respawning (non-blocking)
+                
                 await UniTask.Delay(TimeSpan.FromSeconds(spawnCooldown));
             }
 
@@ -63,12 +67,9 @@ namespace Pools
             _isCoolingDown = false;
             return ball;
         }
-
-        // Internal helper that spawns without checking the cooldown.
+        
         private Ball SpawnWithoutCooldown(Transform parent)
         {
-            if (ballPool == null) return null;
-
             Ball ball = ballPool.GetBall();
             if (ball == null) return null;
 
@@ -95,6 +96,38 @@ namespace Pools
         public void SetActiveSkinSeriesID(int seriesID)
         {
             activeSkinSeriesID = seriesID;
+        }
+
+        private void HandleSameIdCollision(Ball firstBall, Ball secondBall)
+        {
+            if (firstBall == null || secondBall == null) return;
+            if (ballPool == null || ballCoreDatabase == null) return;
+
+            int firstID = firstBall.ID;
+            int secondID = secondBall.ID;
+            if (firstID < 0 || firstID != secondID) return;
+
+            Vector3 mergePosition = (firstBall.transform.position + secondBall.transform.position) * 0.5f;
+
+            ballPool.ReturnPool(firstBall);
+            ballPool.ReturnPool(secondBall);
+
+            int nextBallID = firstID + 1;
+            SpawnMergedBall(nextBallID, mergePosition);
+        }
+
+        private void SpawnMergedBall(int ballID, Vector3 worldPosition)
+        {
+            BallData nextBallData = ballCoreDatabase.GetBallData(ballID);
+            if (nextBallData == null) return;
+
+            Ball mergedBall = ballPool.GetBall();
+            if (mergedBall == null) return;
+
+            mergedBall.transform.SetParent(null);
+            mergedBall.transform.position = worldPosition;
+            mergedBall.Setup(nextBallData, skinDatabase, activeSkinSeriesID);
+            mergedBall.Release(dynamicRoot);
         }
 
         private void RandomizeSpawnBallID()
