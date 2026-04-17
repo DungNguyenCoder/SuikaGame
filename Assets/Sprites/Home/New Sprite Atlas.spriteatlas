@@ -58,7 +58,6 @@ SpriteAtlas:
     - 2a6d0322b0cf3aa4b81e4f96a9372efa: 21300000
     - cea841429ade4af4e972058c6dd14211: 21300000
     - e6896a52b7962e94a89da9937385396e: 21300000
-    - 0672c76206f9c9143853c91a67ec7e97: 21300000
     - 4b4f3023d013d744185207992f6b67c6: 21300000
     - 800d32d342e1bd74fbc3347b084d266e: 21300000
     - f180001433fa7fd4fa274bda859edc42: 21300000
@@ -77,9 +76,6 @@ SpriteAtlas:
     - 31115ff6b8f31874e92f4651cc9d8e01: 21300000
     - 784fdc47e49635d4cab7c807044e718e: 21300000
     - ba9ac548e93ddf84a97ec1c7d0f783c6: 21300000
-    - 6b7d8ca88faf70f43b3873c62ac8bf99: 21300000
-    - 05ad84c82c3eded4abb0fa0ee57e57b8: 21300000
-    - 77277ac8ff463264e9d796e6701cba6e: 21300000
     - bdc0ead8ca0ceed4d8c09331c7752094: 21300000
     - f878ba1972dadf44eb6f43f2c7718385: 21300000
     - 43c944b96b69cd247b82aafe1170c6f4: 21300000
@@ -90,7 +86,6 @@ SpriteAtlas:
     - 25c3992b341fc8c4cb019471985ed5da: 21300000
     - b487c47b833e9bb48bbfbccfb3df86e7: 21300000
     - 9c4e167b1b874a54e92b297c68a36907: 21300000
-    - 476594ab7222a65429c1d17821556d75: 21300000
     - e946761c0be56a048883f1cf27a6f73b: 21300000
     - 5585bb9cf3cc9034db4df62c8542ee4a: 21300000
     - dac2f1acf0d345045b27ac5553204743: 21300000
@@ -115,7 +110,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2a6d0322b0cf3aa4b81e4f96a9372efa, type: 3}
   - {fileID: 21300000, guid: cea841429ade4af4e972058c6dd14211, type: 3}
   - {fileID: 21300000, guid: e6896a52b7962e94a89da9937385396e, type: 3}
-  - {fileID: 21300000, guid: 0672c76206f9c9143853c91a67ec7e97, type: 3}
   - {fileID: 21300000, guid: 4b4f3023d013d744185207992f6b67c6, type: 3}
   - {fileID: 21300000, guid: 800d32d342e1bd74fbc3347b084d266e, type: 3}
   - {fileID: 21300000, guid: f180001433fa7fd4fa274bda859edc42, type: 3}
@@ -134,9 +128,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 31115ff6b8f31874e92f4651cc9d8e01, type: 3}
   - {fileID: 21300000, guid: 784fdc47e49635d4cab7c807044e718e, type: 3}
   - {fileID: 21300000, guid: ba9ac548e93ddf84a97ec1c7d0f783c6, type: 3}
-  - {fileID: 21300000, guid: 6b7d8ca88faf70f43b3873c62ac8bf99, type: 3}
-  - {fileID: 21300000, guid: 05ad84c82c3eded4abb0fa0ee57e57b8, type: 3}
-  - {fileID: 21300000, guid: 77277ac8ff463264e9d796e6701cba6e, type: 3}
   - {fileID: 21300000, guid: bdc0ead8ca0ceed4d8c09331c7752094, type: 3}
   - {fileID: 21300000, guid: f878ba1972dadf44eb6f43f2c7718385, type: 3}
   - {fileID: 21300000, guid: 43c944b96b69cd247b82aafe1170c6f4, type: 3}
@@ -147,7 +138,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 25c3992b341fc8c4cb019471985ed5da, type: 3}
   - {fileID: 21300000, guid: b487c47b833e9bb48bbfbccfb3df86e7, type: 3}
   - {fileID: 21300000, guid: 9c4e167b1b874a54e92b297c68a36907, type: 3}
-  - {fileID: 21300000, guid: 476594ab7222a65429c1d17821556d75, type: 3}
   - {fileID: 21300000, guid: e946761c0be56a048883f1cf27a6f73b, type: 3}
   - {fileID: 21300000, guid: 5585bb9cf3cc9034db4df62c8542ee4a, type: 3}
   - {fileID: 21300000, guid: dac2f1acf0d345045b27ac5553204743, type: 3}
@@ -171,7 +161,6 @@ SpriteAtlas:
   - Khung-1
   - hand
   - _
-  - bg.
   - x
   - Store
   - offk
@@ -190,9 +179,6 @@ SpriteAtlas:
   - Linght (2)
   - Khung-1 (1)
   - video
-  - image_2023_12_27T07_50_42_723Z
-  - bg (1)
-  - bg
   - logo
   - back
   - shop 2
@@ -203,7 +189,6 @@ SpriteAtlas:
   - Skins 1
   - cup1
   - Start game
-  - backgroud 1
   - backgroud 2
   - Linght
   - DG
