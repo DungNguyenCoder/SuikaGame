@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Core
+namespace Core.Skin
 {
     [CreateAssetMenu(menuName = "SuikaGame/Data/Skin")]
     public class SkinDatabase : ScriptableObject

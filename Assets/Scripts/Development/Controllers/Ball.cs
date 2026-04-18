@@ -1,8 +1,9 @@
 using Core;
+using Core.Skin;
 using Development.Managers;
 using UnityEngine;
 
-namespace Controllers
+namespace Development.Controllers
 {
     public class Ball : MonoBehaviour
     {
@@ -11,15 +12,16 @@ namespace Controllers
         [SerializeField] private SpriteRenderer sr;
         private BallData _data;
         private bool _isMergeLocked;
+        private int _loseTriggerTouchCount;
 
-        public int ID => _data != null ? _data.ID : -1;
+        public int ID => _data.ID;
         public bool IsReleased => rb.simulated;
+        public int LoseTriggerTouchCount => _loseTriggerTouchCount;
 
         public void Setup(BallData data, SkinDatabase skinDatabase, int seriesID)
         {
-            if (data == null) return;
-
             _isMergeLocked = false;
+            _loseTriggerTouchCount = 0;
             _data = data;
 
             sr.sprite = skinDatabase.GetSkinSprite(seriesID, data.ID);
@@ -35,9 +37,13 @@ namespace Controllers
             rb.simulated = true;
         }
 
+        public void RegisterLoseTriggerTouch()
+        {
+            _loseTriggerTouchCount++;
+        }
+
         private bool TryLockMergeWith(Ball other)
         {
-            if (other == null || other == this) return false;
             if (_isMergeLocked || other._isMergeLocked) return false;
 
             _isMergeLocked = true;
@@ -55,10 +61,10 @@ namespace Controllers
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (_data == null || !IsReleased) return;
+            if (!IsReleased) return;
 
             var otherBall = collision.collider.GetComponent<Ball>();
-            if (otherBall == null || otherBall._data == null || !otherBall.IsReleased) return;
+            if (otherBall == null || !otherBall.IsReleased) return;
 
             if (ID != otherBall.ID) return;
             if (!TryLockMergeWith(otherBall)) return;

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Core
+namespace Core.Background
 {
     [CreateAssetMenu(menuName = "SuikaGame/Data/Background Picture")]
     public class BackgroundDatabase : ScriptableObject

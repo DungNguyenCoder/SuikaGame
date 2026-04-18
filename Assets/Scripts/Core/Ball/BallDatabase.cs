@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Core
+namespace Core.Ball
 {
     [CreateAssetMenu(menuName = "SuikaGame/Data/Ball Core")]
-    public class BallCoreDatabase : ScriptableObject
+    public class BallDatabase : ScriptableObject
     {
         public List<BallData> ballDatas = new List<BallData>();
 

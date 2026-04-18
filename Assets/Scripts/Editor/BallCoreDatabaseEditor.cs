@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using Core;
+using Core.Ball;
+using Core.Skin;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(BallCoreDatabase))]
+[CustomEditor(typeof(BallDatabase))]
 public class BallCoreDatabaseEditor : UnityEditor.Editor
 {
     public override void OnInspectorGUI()
@@ -15,18 +17,18 @@ public class BallCoreDatabaseEditor : UnityEditor.Editor
         {
             if (GUILayout.Button("Apply Pixels Per Unit To All Skins"))
             {
-                var database = (BallCoreDatabase)target;
+                var database = (BallDatabase)target;
                 ApplyPixelsPerUnitToAllSkins(database);
             }
         }
     }
 
-    private static void ApplyPixelsPerUnitToAllSkins(BallCoreDatabase ballCoreDatabase)
+    private static void ApplyPixelsPerUnitToAllSkins(BallDatabase ballDatabase)
     {
-        if (ballCoreDatabase == null) return;
+        if (ballDatabase == null) return;
 
         var ppuByBallId = new Dictionary<int, float>();
-        foreach (var ballData in ballCoreDatabase.ballDatas)
+        foreach (var ballData in ballDatabase.ballDatas)
         {
             if (ballData == null) continue;
             if (ballData.ID <= 0) continue;

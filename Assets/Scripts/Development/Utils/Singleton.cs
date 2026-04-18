@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace Utils
+namespace Development.Utils
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        public static T Instance { get; private set; }
+        private static T Instance { get; set; }
         [SerializeField] private bool dontDestroyOnLoad;
 
         public virtual void Awake()

@@ -1,0 +1,112 @@
+AI Engineering Rules (Project Standard)
+
+This document defines mandatory rules for any AI agent that reads, modifies, or generates code in this project.
+These are not suggestions. Follow them consistently unless the user explicitly overrides a rule.
+
+1) Null Handling Policy
+
+Core rule:
+Do not add unnecessary null checks.
+If a field is non-null by design, treat it as non-null.
+
+Required behavior:
+Do not write defensive null checks just to silence warnings or avoid crashes temporarily.
+Do not hide initialization or design bugs behind if (x == null) return;.
+If a null issue appears, fix the root cause: wrong initialization order, missing dependency wiring, invalid data contract, or incorrect lifecycle usage.
+
+Practical guidance:
+Prefer strong invariants over defensive branching.
+Fail early in setup or bootstrapping when required dependencies are missing.
+Keep runtime logic clean once invariants are guaranteed.
+
+Examples:
+Good: ensure dependency is assigned during setup, then use it directly.
+Bad: add null guards in every method because setup is unreliable.
+
+2) [SerializeField] Dependency Policy
+
+Core rule:
+Assume all [SerializeField] references are correctly assigned in Inspector.
+
+Required behavior:
+Do not add GetComponent as a fallback because of fear that Inspector assignment might be missing.
+Do not duplicate dependency paths (Inspector assignment plus runtime lookup) without a real architectural reason.
+
+Practical guidance:
+Treat serialized references as the primary source of dependency injection for MonoBehaviours in this project.
+If a reference can truly be optional, document it clearly and handle that case explicitly.
+
+Examples:
+Good: use serialized fields directly.
+Bad: call GetComponent in Awake for fields already serialized.
+
+3) Animation Standard (LitMotion First)
+
+Core rule:
+Use LitMotion for animation-related implementation.
+
+Required behavior:
+Prefer LitMotion APIs in this project when implementing motion or tween behavior.
+Use named methods instead of lambda expressions for LitMotion callbacks and flow.
+
+Why this matters:
+Method-based callbacks improve readability, testability, and refactor safety.
+This keeps animation code consistent across the codebase.
+
+Examples:
+Preferred style: .Bind(OnValueChanged) with a named method.
+Avoid style: inline lambda callbacks for core animation flow.
+
+4) Async Standard (UniTask over Coroutine)
+
+Core rule:
+Use UniTask for asynchronous workflows instead of Unity Coroutine.
+
+Required behavior:
+New async logic should be written with UniTask primitives.
+Avoid introducing new coroutine-based flows unless explicitly required by user or system constraints.
+
+LitMotion and UniTask integration:
+When combining LitMotion with UniTask in MonoBehaviour context, attach motion lifecycle with AddTo(this).
+This ensures the animation is bound to the owning GameObject lifecycle and is disposed correctly.
+
+5) Class Architecture and Responsibilities
+
+Core rule:
+Keep class hierarchy aligned with clear responsibilities.
+Enforce separation of concerns.
+
+Mandatory class: Scene Entrypoint
+There must be one dedicated Entrypoint class for the main game scene.
+
+Entrypoint responsibilities:
+1. Receive or provide access to database dependencies.
+2. Load level data from level file(s).
+3. Distribute initialized dependencies and data to other classes that need them.
+
+Non-responsibilities:
+Entrypoint should not contain all gameplay logic.
+Feature-specific behavior should live in dedicated feature or domain classes.
+
+6) Runtime Level Data Layer
+
+Core rule:
+Always use runtime level data models.
+Do not mutate raw or pure level source data directly during gameplay.
+
+Required behavior:
+Create runtime representations that are safe to modify at runtime.
+Keep source level data immutable or treated as read-only configuration.
+
+Scaling rule:
+If a level has multiple domains (board, goals, spawn, obstacles, and so on), split runtime data into multiple focused runtime data classes.
+Avoid one large god object for all level runtime state.
+
+7) Decision Priority for AI
+
+When implementing code, apply this priority order:
+1. Preserve project invariants and architecture.
+2. Fix root causes instead of masking symptoms.
+3. Keep dependencies explicit and predictable.
+4. Keep behavior lifecycle-safe, especially animations and async flows.
+5. Maintain consistency with these standards across new and edited code.

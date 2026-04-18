@@ -1,14 +1,15 @@
+using System;
 using System.Collections.Generic;
-using Controllers;
+using Development.Controllers;
 using UnityEngine;
 
-namespace Pools
+namespace Development.Pools
 {
     public class BallPool : MonoBehaviour
     {
         [SerializeField] private Ball ballPrefab;
-        [SerializeField] private int amount = 30;
-        private List<Ball> _tilePool = new List<Ball>();
+        [SerializeField] private int amount = 50;
+        private readonly List<Ball> _tilePool = new List<Ball>();
 
         private void Awake()
         {
@@ -47,7 +48,6 @@ namespace Pools
 
         public void ReturnPool(Ball tile)
         {
-            if (!_tilePool.Contains(tile)) return;
             tile.PrepareForPool();
             tile.gameObject.SetActive(false);
             tile.transform.SetParent(transform);
