@@ -8,5 +8,8 @@ namespace Development.Utils
         #else
                 false;
         #endif
+        
+        public static string MAINMENU_SCENE = "MainMenu";
+        public static string GAMEPLAY_SCENE = "Gameplay";
     }
 }

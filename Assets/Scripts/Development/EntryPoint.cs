@@ -11,6 +11,7 @@ using Development.LoadSave.Data;
 using Development.Managers;
 using Development.Pools;
 using Development.StateMachine;
+using Development.Utils;
 using UnityEngine;
 
 namespace Development
@@ -59,8 +60,16 @@ namespace Development
             _playerSaveData = await JsonRepository.LoadPlayerProfile();
             SaveRuntimeData.SetPlayer(_playerSaveData);
 
-            bool hasGameProgress = JsonRepository.HasGameProgress();
-            _progressSaveData = await JsonRepository.LoadGameProgress();
+            bool startNewGame = GameLaunchOptions.ConsumeStartNewGameRequest();
+            if (startNewGame)
+            {
+                JsonRepository.DeleteGameProgress();
+            }
+
+            bool hasGameProgress = !startNewGame && JsonRepository.HasGameProgress();
+            _progressSaveData = hasGameProgress
+                ? await JsonRepository.LoadGameProgress()
+                : new ProgressSaveData();
             SaveRuntimeData.SetProgress(_progressSaveData);
 
             _gameContext.PlayerSaveData = _playerSaveData;
