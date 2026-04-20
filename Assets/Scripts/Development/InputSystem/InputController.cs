@@ -1,6 +1,7 @@
 using System;
 using Core.Enums;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Development.InputSystem
 {
@@ -17,6 +18,7 @@ namespace Development.InputSystem
 
         private bool _pointerDown;
         private bool _isDragging;
+        private bool _ignorePointerGesture;
         private Vector2 _pointerDownScreenPos;
 
         private void Update()
@@ -47,7 +49,7 @@ namespace Development.InputSystem
         {
             if (Input.GetMouseButtonDown(0))
             {
-                HandlePointerDown(Input.mousePosition);
+                HandlePointerDown(Input.mousePosition, -1);
                 return;
             }
 
@@ -70,7 +72,7 @@ namespace Development.InputSystem
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    HandlePointerDown(touch.position);
+                    HandlePointerDown(touch.position, touch.fingerId);
                     return;
                 case TouchPhase.Moved:
                 case TouchPhase.Stationary:
@@ -85,6 +87,20 @@ namespace Development.InputSystem
 
         private void HandlePointerDown(Vector2 screenPos)
         {
+            HandlePointerDown(screenPos, -1);
+        }
+
+        private void HandlePointerDown(Vector2 screenPos, int pointerId)
+        {
+            if (IsPointerOverUi(pointerId))
+            {
+                _ignorePointerGesture = true;
+                _pointerDown = false;
+                _isDragging = false;
+                return;
+            }
+
+            _ignorePointerGesture = false;
             _pointerDown = true;
             _isDragging = false;
             _pointerDownScreenPos = screenPos;
@@ -94,6 +110,7 @@ namespace Development.InputSystem
 
         private void HandlePointerHold(Vector2 screenPos)
         {
+            if (_ignorePointerGesture) return;
             if (!_pointerDown) return;
 
             if (!_isDragging)
@@ -108,6 +125,12 @@ namespace Development.InputSystem
 
         private void HandlePointerUp(Vector2 screenPos)
         {
+            if (_ignorePointerGesture)
+            {
+                _ignorePointerGesture = false;
+                return;
+            }
+
             if (!_pointerDown) return;
 
             float worldX = ScreenToWorldX(screenPos);
@@ -118,6 +141,22 @@ namespace Development.InputSystem
 
             _pointerDown = false;
             _isDragging = false;
+        }
+
+        private bool IsPointerOverUi(int pointerId)
+        {
+            EventSystem eventSystem = EventSystem.current;
+            if (eventSystem == null)
+            {
+                return false;
+            }
+
+            if (pointerId < 0)
+            {
+                return eventSystem.IsPointerOverGameObject();
+            }
+
+            return eventSystem.IsPointerOverGameObject(pointerId);
         }
 
         private float ScreenToWorldX(Vector2 screenPos)
