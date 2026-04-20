@@ -52,6 +52,27 @@ namespace Development.Pools
             tile.gameObject.SetActive(false);
             tile.transform.SetParent(transform);
         }
+
+        public void FillReleasedBalls(List<Ball> output)
+        {
+            output.Clear();
+            foreach (Ball tile in _tilePool)
+            {
+                if (!tile.gameObject.activeInHierarchy) continue;
+                if (!tile.IsReleased) continue;
+                output.Add(tile);
+            }
+        }
+
+        public void ReturnAllReleasedBalls()
+        {
+            foreach (Ball tile in _tilePool)
+            {
+                if (!tile.gameObject.activeInHierarchy) continue;
+                if (!tile.IsReleased) continue;
+                ReturnPool(tile);
+            }
+        }
     }
 }
 

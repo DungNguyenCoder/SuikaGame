@@ -984,7 +984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballTag: Ball
-  triggerArea: {fileID: 0}
+  triggerArea: {fileID: 1549462871}
 --- !u!1 &1610687615
 GameObject:
   m_ObjectHideFlags: 0

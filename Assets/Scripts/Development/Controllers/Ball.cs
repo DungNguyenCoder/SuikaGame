@@ -17,6 +17,8 @@ namespace Development.Controllers
         public int ID => _data.ID;
         public bool IsReleased => rb.simulated;
         public int LoseTriggerTouchCount => _loseTriggerTouchCount;
+        public Vector2 Velocity => rb.velocity;
+        public float AngularVelocity => rb.angularVelocity;
 
         public void Setup(BallData data, SkinDatabase skinDatabase, int seriesID)
         {
@@ -35,6 +37,12 @@ namespace Development.Controllers
         {
             transform.SetParent(releasedParent, true);
             rb.simulated = true;
+        }
+
+        public void SetMotion(Vector2 velocity, float angularVelocity)
+        {
+            rb.velocity = velocity;
+            rb.angularVelocity = angularVelocity;
         }
 
         public void RegisterLoseTriggerTouch()

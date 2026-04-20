@@ -4,7 +4,7 @@ namespace Development.Utils
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static T Instance { get; set; }
+        public static T Instance { get; set; }
         [SerializeField] private bool dontDestroyOnLoad;
 
         public virtual void Awake()

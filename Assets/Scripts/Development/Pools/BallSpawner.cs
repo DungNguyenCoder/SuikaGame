@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using Core;
 using Core.Ball;
 using Core.Skin;
 using Cysharp.Threading.Tasks;
 using Development.Controllers;
+using Development.LoadSave.Data;
 using Development.Managers;
 using UnityEngine;
 
@@ -90,6 +92,34 @@ namespace Development.Pools
             activeSkinSeriesID = seriesID;
         }
 
+        public void ReturnToPool(Ball ball)
+        {
+            _ballPool.ReturnPool(ball);
+        }
+
+        public void FillReleasedBalls(List<Ball> output)
+        {
+            _ballPool.FillReleasedBalls(output);
+        }
+
+        public void RestoreReleasedBalls(List<BallSaveData> savedBalls)
+        {
+            _ballPool.ReturnAllReleasedBalls();
+            foreach (BallSaveData savedBall in savedBalls)
+            {
+                SpawnReleasedBall(savedBall);
+            }
+        }
+
+        public Ball SpawnAndAttachById(Transform parent, int ballId)
+        {
+            Ball ball = _ballPool.GetBall();
+            ball.transform.SetParent(parent);
+            ball.transform.localPosition = Vector3.zero;
+            ball.Setup(_ballDatabase.GetBallData(ballId), _skinDatabase, activeSkinSeriesID);
+            return ball;
+        }
+
         private void HandleSameIdCollision(Ball firstBall, Ball secondBall)
         {
             int firstID = firstBall.ID;
@@ -131,6 +161,17 @@ namespace Development.Pools
             //     throw new InvalidOperationException($"BallData ID {spawnBallID} was not found.");
 
             return ballData;
+        }
+
+        private void SpawnReleasedBall(BallSaveData savedBall)
+        {
+            BallData ballData = _ballDatabase.GetBallData(savedBall.BallId);
+            Ball restoredBall = _ballPool.GetBall();
+            restoredBall.transform.SetParent(null);
+            restoredBall.transform.position = savedBall.GetPosition();
+            restoredBall.Setup(ballData, _skinDatabase, activeSkinSeriesID);
+            restoredBall.Release(dynamicRoot);
+            restoredBall.SetMotion(savedBall.GetVelocity(), savedBall.AngularVelocity);
         }
     }
 }

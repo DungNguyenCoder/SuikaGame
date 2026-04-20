@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Development.InputSystem;
+using Development.LoadSave.Data;
 using Development.Pools;
 using UnityEngine;
 
@@ -11,9 +12,9 @@ namespace Development.Controllers
         private InputController _inputController;
         private BallSpawner _ballSpawner;
         private Ball _ball;
-        private float _minX = -1.1f;
-        private float _maxX = 2f;
-        private bool _clampX = true;
+        private readonly float _minX = -1.1f;
+        private readonly float _maxX = 2f;
+        private readonly bool _clampX = true;
         private bool _isHandlingBall = false;
         private float _pointerDownPlayerXOffset;
 
@@ -25,6 +26,29 @@ namespace Development.Controllers
 
         private void Start()
         {
+            _ball = _ballSpawner.SpawnAndAttach(ballPos);
+        }
+
+        public CloudSaveData CaptureSaveData()
+        {
+            return new CloudSaveData
+            {
+                HasBall = _ball.gameObject.activeInHierarchy && !_ball.IsReleased,
+                BallId = _ball.ID,
+                PositionX = transform.position.x
+            };
+        }
+
+        public void RestoreFromSaveData(CloudSaveData saveData)
+        {
+            SetPlayerX(saveData.PositionX);
+            _ballSpawner.ReturnToPool(_ball);
+            if (saveData.HasBall)
+            {
+                _ball = _ballSpawner.SpawnAndAttachById(ballPos, saveData.BallId);
+                return;
+            }
+
             _ball = _ballSpawner.SpawnAndAttach(ballPos);
         }
 

@@ -1,9 +1,14 @@
 using System;
+using System.Collections.Generic;
 using Core;
 using Core.Ball;
 using Core.Skin;
+using Cysharp.Threading.Tasks;
 using Development.Controllers;
 using Development.InputSystem;
+using Development.LoadSave;
+using Development.LoadSave.Data;
+using Development.Managers;
 using Development.Pools;
 using Development.StateMachine;
 using UnityEngine;
@@ -19,27 +24,114 @@ namespace Development
         [SerializeField] private InputController inputController;
         [SerializeField] private Cloud cloud;
 
+        private readonly List<Ball> _releasedBalls = new();
         private GameStateController _gameStateController;
         private GameStateMachine _stateMachine;
+        private GameContext _gameContext;
+        private PlayerSaveData _playerSaveData;
+        private ProgressSaveData _progressSaveData;
 
         private void Awake()
         {
             InitStateMachine();
-            StartGame();
+            InitGame();
+            StartAsync().Forget();
         }
 
-        private void StartGame()
+        private void OnEnable()
+        {
+            EventManager.OnLoseLevel += HandleLoseLevel;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.OnLoseLevel -= HandleLoseLevel;
+        }
+
+        private void InitGame()
         {
             ballSpawner.Init(ballDatabase, skinDatabase, ballPool);
             cloud.Init(inputController, ballSpawner);
         }
 
+        private async UniTaskVoid StartAsync()
+        {
+            _playerSaveData = await JsonRepository.LoadPlayerProfile();
+            SaveRuntimeData.SetPlayer(_playerSaveData);
+
+            bool hasGameProgress = JsonRepository.HasGameProgress();
+            _progressSaveData = await JsonRepository.LoadGameProgress();
+            SaveRuntimeData.SetProgress(_progressSaveData);
+
+            _gameContext.PlayerSaveData = _playerSaveData;
+            _gameContext.ProgressSaveData = _progressSaveData;
+
+            await UniTask.NextFrame();
+            if (hasGameProgress)
+            {
+                ApplySavedProgress();
+            }
+        }
+
+        private void ApplySavedProgress()
+        {
+            ballSpawner.RestoreReleasedBalls(_progressSaveData.BoardBalls);
+            cloud.RestoreFromSaveData(_progressSaveData.Cloud);
+        }
+
+        private void CaptureProgressData()
+        {
+            _progressSaveData.BoardBalls.Clear();
+            ballSpawner.FillReleasedBalls(_releasedBalls);
+            foreach (Ball ball in _releasedBalls)
+            {
+                _progressSaveData.BoardBalls.Add(new BallSaveData(ball.ID, ball.transform.position, ball.Velocity, ball.AngularVelocity));
+            }
+
+            _progressSaveData.Cloud = cloud.CaptureSaveData();
+            SaveRuntimeData.SetProgress(_progressSaveData);
+        }
+
+        private async UniTask SaveRuntimeState()
+        {
+            CaptureProgressData();
+            await JsonRepository.SavePlayerProfile(_playerSaveData);
+            await JsonRepository.SaveGameProgress(_progressSaveData);
+        }
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            if (!pauseStatus)
+            {
+                return;
+            }
+
+            SaveRuntimeState().Forget();
+        }
+
+        private void OnApplicationQuit()
+        {
+            SaveRuntimeState().Forget();
+        }
+
+        private void HandleLoseLevel()
+        {
+            JsonRepository.DeleteGameProgress();
+            _progressSaveData = new ProgressSaveData();
+            SaveRuntimeData.SetProgress(_progressSaveData);
+            _gameContext.ProgressSaveData = _progressSaveData;
+        }
+
         private void InitStateMachine()
         {
-            var gameContext = new GameContext();
+            _gameContext = new GameContext
+            {
+                PlayerSaveData = _playerSaveData,
+                ProgressSaveData = _progressSaveData
+            };
 
             _stateMachine = new GameStateMachine(GameState.Loaded);
-            _gameStateController = new GameStateController(_stateMachine, gameContext);
+            _gameStateController = new GameStateController(_stateMachine, _gameContext);
 
             _stateMachine.OnTransitioned(transition =>
             {
