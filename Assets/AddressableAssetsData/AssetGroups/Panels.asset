@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Panels
+  m_EditorClassIdentifier: 
+  m_GroupName: Panels
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d492c11b962ac034aad42aa22cccd659
+  m_SerializeEntries:
+  - m_GUID: 8589ac9020f03b24ba31dd16baafec35
+    m_Address: SkinPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a62e138ea5e88c641842045b5951e5be
+    m_Address: SettingPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df37bee78e1b0a94eb2bc6a5fb0c7b88
+    m_Address: CheckInPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f229749f174b4e542a3068e4ddf47984
+    m_Address: MainMenuUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: dc3f5e31c97e7cb478d195c459df7016, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 18d4d4774bf66e14cb64c01a3466e297, type: 2}
+    - {fileID: 11400000, guid: cb75ab81344920940998c9bc8d4149bd, type: 2}
