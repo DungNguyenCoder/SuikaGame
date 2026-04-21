@@ -49,6 +49,11 @@ namespace Development
             EventManager.OnLoseLevel -= HandleLoseLevel;
         }
 
+        private void OnDestroy()
+        {
+            _gameStateController.Destroy();
+        }
+
         private void InitGame()
         {
             ballSpawner.Init(ballDatabase, skinDatabase, ballPool);
@@ -74,6 +79,7 @@ namespace Development
 
             _gameContext.PlayerSaveData = _playerSaveData;
             _gameContext.ProgressSaveData = _progressSaveData;
+            EventManager.OnScoreChanged?.Invoke(_progressSaveData.CurrentScore, _playerSaveData.HighScore);
 
             await UniTask.NextFrame();
             if (hasGameProgress)
@@ -125,10 +131,12 @@ namespace Development
 
         private void HandleLoseLevel()
         {
+            _ = JsonRepository.SavePlayerProfile(_playerSaveData);
             JsonRepository.DeleteGameProgress();
             _progressSaveData = new ProgressSaveData();
             SaveRuntimeData.SetProgress(_progressSaveData);
             _gameContext.ProgressSaveData = _progressSaveData;
+            EventManager.OnScoreChanged?.Invoke(_progressSaveData.CurrentScore, _playerSaveData.HighScore);
         }
 
         private void InitStateMachine()

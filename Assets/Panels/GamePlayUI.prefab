@@ -661,6 +661,7 @@ GameObject:
   - component: {fileID: 1471364468706310751}
   - component: {fileID: 5119796114623216939}
   - component: {fileID: 8079077421999535682}
+  - component: {fileID: 3489474074099105470}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -726,6 +727,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3489474074099105470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5069258932480651354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c528a8647328f4a9d9564602b1a0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 4359333376321746834}
 --- !u!1 &5381513678049970405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,7 +1086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnClose: 0
-  score: {fileID: 4359333376321746834}
+  scoreAnimation: {fileID: 3489474074099105470}
   coin: {fileID: 8191949367405759265}
   booster: {fileID: 7948435734848851382}
 --- !u!1 &6474231109450088404
@@ -1395,8 +1409,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.07006036}
-  m_SizeDelta: {x: 395.0555, y: 101.87659}
+  m_AnchoredPosition: {x: 0.00103, y: 0.07006036}
+  m_SizeDelta: {x: 288.34, y: 101.8766}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7117632379235070392
 CanvasRenderer:
@@ -1426,7 +1440,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 8888
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 901cd47f39b060c4ba2d37c327c6be8f, type: 2}
   m_sharedMaterial: {fileID: -7297106103326787184, guid: 901cd47f39b060c4ba2d37c327c6be8f, type: 2}
@@ -1453,12 +1467,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 60
   m_fontSizeBase: 80
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1469,7 +1483,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1489,7 +1503,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 14.044922, y: 0, z: 13.108582, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

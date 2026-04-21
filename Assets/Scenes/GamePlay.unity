@@ -1507,6 +1507,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 860804464530660611, guid: ab10364f93eefe94b97827989848af9b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 288.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 860804464530660611, guid: ab10364f93eefe94b97827989848af9b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 101.8766
+      objectReference: {fileID: 0}
+    - target: {fileID: 860804464530660611, guid: ab10364f93eefe94b97827989848af9b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00103
+      objectReference: {fileID: 0}
     - target: {fileID: 890807744953920189, guid: ab10364f93eefe94b97827989848af9b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1633,6 +1645,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4022743912905664307, guid: ab10364f93eefe94b97827989848af9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359333376321746834, guid: ab10364f93eefe94b97827989848af9b, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359333376321746834, guid: ab10364f93eefe94b97827989848af9b, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359333376321746834, guid: ab10364f93eefe94b97827989848af9b, type: 3}
+      propertyPath: m_margin.x
+      value: 14.044922
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359333376321746834, guid: ab10364f93eefe94b97827989848af9b, type: 3}
+      propertyPath: m_margin.z
+      value: 13.108582
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359333376321746834, guid: ab10364f93eefe94b97827989848af9b, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359333376321746834, guid: ab10364f93eefe94b97827989848af9b, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359333376321746834, guid: ab10364f93eefe94b97827989848af9b, type: 3}
+      propertyPath: m_enableWordWrapping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6226547807690830571, guid: ab10364f93eefe94b97827989848af9b, type: 3}

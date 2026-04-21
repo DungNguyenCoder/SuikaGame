@@ -1,4 +1,5 @@
 using System;
+using Development.Controllers;
 using Development.Managers;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ namespace Development.StateMachine.States
 {
     public class StartedState : BaseGameState, IDisposable
     {
+        private const int BaseMergeScore = 50;
+        private const int MaxBallId = 10;
+
         public StartedState(GameStateMachine stateMachine, GameContext context) : base(stateMachine, context)
         {
             stateMachine.Configure(GameState.Started)
@@ -20,7 +24,7 @@ namespace Development.StateMachine.States
             Time.timeScale = 1f;
             EventManager.OnLoseLevel += HandleLoseLevel;
             EventManager.OnRequestPause += HandleRequestPause;
-
+            EventManager.SameIdCollision += HandleSameIdCollision;
         }
 
         private void HandleLoseLevel()
@@ -33,16 +37,43 @@ namespace Development.StateMachine.States
             StateMachine.Fire(GameTrigger.Pause);
         }
 
+        private void HandleSameIdCollision(Ball firstBall, Ball secondBall)
+        {
+            int mergedBallId = firstBall.ID;
+            if (mergedBallId >= MaxBallId)
+            {
+                return;
+            }
+
+            int scoreToAdd = CalculateMergeScore(mergedBallId);
+            Context.ProgressSaveData.CurrentScore += scoreToAdd;
+
+            int currentScore = Context.ProgressSaveData.CurrentScore;
+            if (currentScore > Context.PlayerSaveData.HighScore)
+            {
+                Context.PlayerSaveData.HighScore = currentScore;
+            }
+
+            EventManager.OnScoreChanged?.Invoke(currentScore, Context.PlayerSaveData.HighScore);
+        }
+
+        private int CalculateMergeScore(int ballId)
+        {
+            return BaseMergeScore << (ballId - 1);
+        }
+
         private void OnExit()
         {
             EventManager.OnLoseLevel -= HandleLoseLevel;
             EventManager.OnRequestPause -= HandleRequestPause;
+            EventManager.SameIdCollision -= HandleSameIdCollision;
         }
 
         public void Dispose()
         {
             EventManager.OnLoseLevel -= HandleLoseLevel;
             EventManager.OnRequestPause -= HandleRequestPause;
+            EventManager.SameIdCollision -= HandleSameIdCollision;
         }
     }
 }
