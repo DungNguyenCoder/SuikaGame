@@ -1331,10 +1331,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 147432250584386936, guid: ccc717c760ed1d04c823ed8af64c2128, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5634961604297261469, guid: ccc717c760ed1d04c823ed8af64c2128, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

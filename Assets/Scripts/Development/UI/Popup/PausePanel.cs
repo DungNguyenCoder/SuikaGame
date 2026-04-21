@@ -18,6 +18,7 @@ namespace Development.UI.Popup
 
         public void OnClickTutorial()
         {
+            GameLaunchOptions.RequestTutorialFromPauseMenu();
             PanelManager.Instance.OpenPanel(PanelConfig.TUTORIAL_PANEL);
         }
 

@@ -10,6 +10,7 @@ namespace Development.LoadSave.Data
         public string AvatarId = string.Empty;
         public int Coin;
         public int HighScore;
+        public bool HasSeenTutorial;
         public int SelectedSkinSeriesId = 1;
         public int SelectedBackgroundId = 1;
         public List<int> PurchasedSkinSeriesIds = new List<int>();

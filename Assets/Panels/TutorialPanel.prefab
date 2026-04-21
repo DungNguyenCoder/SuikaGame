@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc6819e64e4c44beb63ea2ef45e1a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPlayMode: 1
+  autoPlayMode: 2
   animationMode: 0
   components:
   - rid: 4339268196719132676
