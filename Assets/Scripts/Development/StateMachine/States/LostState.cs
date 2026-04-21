@@ -9,8 +9,7 @@ namespace Development.StateMachine.States
         public LostState(GameStateMachine stateMachine, GameContext context) : base(stateMachine, context)
         {
             stateMachine.Configure(GameState.Lost)
-                .OnEntry(OnEntry)
-                .Permit(GameTrigger.Restart, GameState.Started);
+                .OnEntry(OnEntry);
         }
 
         private void OnEntry()

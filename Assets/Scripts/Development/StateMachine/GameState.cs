@@ -4,6 +4,7 @@ namespace Development.StateMachine
     {
         Loaded,
         Started,
+        Paused,
         Lost
     }
 }

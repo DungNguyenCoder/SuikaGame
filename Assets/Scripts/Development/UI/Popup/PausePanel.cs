@@ -1,5 +1,6 @@
 using Development.Managers;
 using Development.Utils;
+using UnityEngine.SceneManagement;
 
 namespace Development.UI.Popup
 {
@@ -7,7 +8,7 @@ namespace Development.UI.Popup
     {
         public void OnClickContinue()
         {
-            
+            EventManager.OnRequestResume?.Invoke();
         }
         
         public void OnClickSettings()
@@ -18,6 +19,11 @@ namespace Development.UI.Popup
         public void OnClickTutorial()
         {
             PanelManager.Instance.OpenPanel(PanelConfig.TUTORIAL_PANEL);
+        }
+
+        public void OnClickQuit()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

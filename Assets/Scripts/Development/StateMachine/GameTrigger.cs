@@ -4,6 +4,8 @@ namespace Development.StateMachine
     {
         Start,
         Lose,
-        Restart
+        Restart,
+        Resume,
+        Pause
     }
 }

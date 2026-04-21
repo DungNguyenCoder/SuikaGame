@@ -26,6 +26,7 @@ namespace Development.StateMachine
             _stateDispose.Add(new LoadedState(_stateMachine, _context));
             _stateDispose.Add(new StartedState(_stateMachine, _context));
             _stateDispose.Add(new LostState(_stateMachine, _context));
+            _stateDispose.Add(new PausedState(_stateMachine, _context));
         }
         
         public void Destroy()

@@ -18,7 +18,7 @@ namespace Development.UI.GamePlay
         
         public void OnClickPause()
         {
-            PanelManager.Instance.OpenPanel(PanelConfig.PAUSE_PANEL);
+            EventManager.OnRequestPause?.Invoke();
         }
     }
 }
