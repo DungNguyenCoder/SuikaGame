@@ -66,6 +66,7 @@ SpriteAtlas:
     - 303c3fa4471f00b4a9e0ef89cbe84c8d: 21300000
     - bc77e2c4c5373cf49a9711577266d2fc: 21300000
     - c31ef6e48ce394d4e99ecb0386005ee3: 21300000
+    - bd6098f4d1076f749a5161da04619dce: 21300000
     - ee524e5546d7af540a2da543d887af66: 21300000
     - 83b74e55bd36c4b469846599aaa52c63: 21300000
     - adf9daa51c6b98e42b41ea17bba90016: 21300000
@@ -118,6 +119,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 303c3fa4471f00b4a9e0ef89cbe84c8d, type: 3}
   - {fileID: 21300000, guid: bc77e2c4c5373cf49a9711577266d2fc, type: 3}
   - {fileID: 21300000, guid: c31ef6e48ce394d4e99ecb0386005ee3, type: 3}
+  - {fileID: 21300000, guid: bd6098f4d1076f749a5161da04619dce, type: 3}
   - {fileID: 21300000, guid: ee524e5546d7af540a2da543d887af66, type: 3}
   - {fileID: 21300000, guid: 83b74e55bd36c4b469846599aaa52c63, type: 3}
   - {fileID: 21300000, guid: adf9daa51c6b98e42b41ea17bba90016, type: 3}
@@ -169,6 +171,7 @@ SpriteAtlas:
   - Comming soon
   - khung2
   - Shop
+  - c6f60fbe4388c1c486f54dfdb22f16ea
   - onk
   - shop 1
   - LG

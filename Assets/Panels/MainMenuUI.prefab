@@ -805,8 +805,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -20, y: -236}
-  m_SizeDelta: {x: 1080, y: 480}
+  m_AnchoredPosition: {x: 0, y: -240}
+  m_SizeDelta: {x: 977.3562, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &632193209321776512
 CanvasRenderer:
@@ -836,7 +836,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bdc0ead8ca0ceed4d8c09331c7752094, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd6098f4d1076f749a5161da04619dce, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 424685451415802474}
   - component: {fileID: 3309645852524461588}
   m_Layer: 5
-  m_Name: GameIcon
+  m_Name: Sparkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -950,8 +950,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3552528211822048693}
+  m_Children: []
   m_Father: {fileID: 7941785605783204008}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1027,11 +1026,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6448762052783017258}
+  m_Father: {fileID: 7941785605783204008}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7163123083626317793
@@ -2008,6 +2007,7 @@ GameObject:
   - component: {fileID: 7941785605783204008}
   - component: {fileID: 3716884870979856502}
   - component: {fileID: 8741005728908317603}
+  - component: {fileID: 8397540402940638737}
   m_Layer: 5
   m_Name: ContentBlock
   m_TagString: Untagged
@@ -2029,6 +2029,7 @@ RectTransform:
   m_Children:
   - {fileID: 8988919753129936654}
   - {fileID: 6448762052783017258}
+  - {fileID: 3552528211822048693}
   - {fileID: 5278633744577126629}
   - {fileID: 6354752719474028041}
   m_Father: {fileID: 387256421179374513}
@@ -2058,6 +2059,211 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1818fa0e16f4d0ba043b6b503b1f01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8397540402940638737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138606822389003553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc6819e64e4c44beb63ea2ef45e1a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoPlayMode: 1
+  animationMode: 0
+  components:
+  - rid: 4339268196719132680
+  - rid: 4339268196719132681
+  - rid: 4339268196719132682
+  - rid: 4339268196719132684
+  playOnAwake: 1
+  version: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 4339268196719132680
+      type: {class: TransformScaleAnimation, ns: LitMotion.Animation.Components, asm: LitMotion.Animation}
+      data:
+        displayName: Scale
+        enabled: 1
+        target: {fileID: 8988919753129936654}
+        settings:
+          startValue: {x: 1, y: 1, z: 1}
+          endValue: {x: 0.95, y: 0.95, z: 0.95}
+          duration: 1
+          ease: 0
+          customEaseCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          delay: 0
+          delayType: 0
+          loops: 10000
+          loopType: 3
+          cancelOnError: 0
+          skipValuesDuringDelay: 0
+          immediateBind: 0
+          schedulerType: 12
+          additionalSettings: 0
+        relative: 0
+    - rid: 4339268196719132681
+      type: {class: TransformRotationAnimation, ns: LitMotion.Animation.Components, asm: LitMotion.Animation}
+      data:
+        displayName: Rotation
+        enabled: 1
+        target: {fileID: 6448762052783017258}
+        settings:
+          startValue: {x: 0, y: 0, z: 0}
+          endValue: {x: 0, y: 0, z: 360}
+          duration: 10
+          ease: 0
+          customEaseCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          delay: 0
+          delayType: 0
+          loops: 10000
+          loopType: 0
+          cancelOnError: 0
+          skipValuesDuringDelay: 0
+          immediateBind: 0
+          schedulerType: 12
+          additionalSettings: 0
+        relative: 0
+        useWorldSpace: 0
+    - rid: 4339268196719132682
+      type: {class: TransformScaleAnimation, ns: LitMotion.Animation.Components, asm: LitMotion.Animation}
+      data:
+        displayName: Scale
+        enabled: 1
+        target: {fileID: 6448762052783017258}
+        settings:
+          startValue: {x: 1, y: 1, z: 1}
+          endValue: {x: 1.2, y: 1.2, z: 1.2}
+          duration: 3
+          ease: 0
+          customEaseCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          delay: 0
+          delayType: 0
+          loops: 10000
+          loopType: 3
+          cancelOnError: 0
+          skipValuesDuringDelay: 0
+          immediateBind: 0
+          schedulerType: 12
+          additionalSettings: 1
+        relative: 0
+    - rid: 4339268196719132684
+      type: {class: TransformScaleAnimation, ns: LitMotion.Animation.Components, asm: LitMotion.Animation}
+      data:
+        displayName: Scale
+        enabled: 1
+        target: {fileID: 5278633744577126629}
+        settings:
+          startValue: {x: 1, y: 1, z: 1}
+          endValue: {x: 1.1, y: 1.1, z: 1.1}
+          duration: 0.75
+          ease: 0
+          customEaseCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          delay: 0
+          delayType: 0
+          loops: 10000
+          loopType: 3
+          cancelOnError: 0
+          skipValuesDuringDelay: 0
+          immediateBind: 0
+          schedulerType: 12
+          additionalSettings: 0
+        relative: 0
 --- !u!1 &7688361744301846305
 GameObject:
   m_ObjectHideFlags: 0
