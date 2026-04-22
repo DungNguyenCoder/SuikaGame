@@ -1,11 +1,19 @@
 using Development.Managers;
 using Development.Utils;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Development.UI.Popup
 {
     public class PausePanel : Panel
     {
+        [SerializeField] private Transform panelTransform;
+
+        private void OnEnable()
+        {
+            panelTransform.localScale = Vector3.zero;
+        }
+        
         public void OnClickContinue()
         {
             EventManager.OnRequestResume?.Invoke();

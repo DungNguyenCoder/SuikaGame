@@ -9,6 +9,19 @@ namespace Development.UI.Popup
 {
     public class TutorialPanel : Panel
     {
+        [SerializeField] private Transform titleTransform;
+        [SerializeField] private Transform tutorialTransform;
+        [SerializeField] private Transform startButtonTransform;
+        [SerializeField] private Transform goBackButtonTransform;
+
+        private void OnEnable()
+        {
+            titleTransform.localScale = Vector3.zero;
+            startButtonTransform.localScale = Vector3.zero;
+            goBackButtonTransform.localScale = Vector3.zero;
+            tutorialTransform.localScale = Vector3.zero;
+        }
+        
         public void OnClickStartGame()
         {
             HandleStartGameAsync().Forget();

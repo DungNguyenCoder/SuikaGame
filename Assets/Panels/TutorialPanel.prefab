@@ -91,6 +91,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnClose: 0
+  titleTransform: {fileID: 126506001577476490}
+  tutorialTransform: {fileID: 8287396301433841523}
+  startButtonTransform: {fileID: 5948421587853060038}
+  goBackButtonTransform: {fileID: 9122641958402946626}
 --- !u!114 &6352491132030622384
 MonoBehaviour:
   m_ObjectHideFlags: 0

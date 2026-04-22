@@ -17,16 +17,17 @@ MonoBehaviour:
   - UI
   musicCategories:
   - 
-  Sounds: []
+  Sounds:
+  - {fileID: 11400000, guid: 76fd4c5e84cd58843b77b74bf3a29699, type: 2}
   Music: []
   useCustomNames: 1
-  generatedName: 
-  musicEnum: 
-  musicEnumGenerated: 
+  generatedName: AudioLibrary
+  musicEnum: AudioLibraryMusic
+  musicEnumGenerated: AudioLibraryMusic
   musicNamespace: 
   musicNamespaceGenerated: 
-  soundEnum: 
-  soundEnumGenerated: 
+  soundEnum: AudioLibrarySounds
+  soundEnumGenerated: AudioLibrarySounds
   soundNamespace: 
   soundNamespaceGenerated: 
   soundCategoriesToList:
@@ -34,7 +35,8 @@ MonoBehaviour:
     files: []
     foldout: 1
   - name: UI
-    files: []
+    files:
+    - {fileID: 11400000, guid: 76fd4c5e84cd58843b77b74bf3a29699, type: 2}
     foldout: 1
   musicCategoriesToList:
   - name: 

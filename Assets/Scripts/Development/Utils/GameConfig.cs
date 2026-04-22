@@ -11,5 +11,6 @@ namespace Development.Utils
         
         public static string MAINMENU_SCENE = "MainMenu";
         public static string GAMEPLAY_SCENE = "Gameplay";
+        public const string VIBRATION_KEY = "Setting_Vibration";
     }
 }
