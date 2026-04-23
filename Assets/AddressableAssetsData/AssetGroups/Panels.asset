@@ -17,13 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: d492c11b962ac034aad42aa22cccd659
   m_SerializeEntries:
+  - m_GUID: 6c62555bb0188164fa7130daccf880da
+    m_Address: AccountPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7c33a394e9f92c04d8cdf94705d976b6
     m_Address: PausePanel
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8589ac9020f03b24ba31dd16baafec35
-    m_Address: SkinPanel
+    m_Address: ShopPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

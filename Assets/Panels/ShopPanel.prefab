@@ -1194,7 +1194,7 @@ GameObject:
   - component: {fileID: 2386823458032623130}
   - component: {fileID: 5327873514183045333}
   m_Layer: 5
-  m_Name: SkinPanel
+  m_Name: ShopPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
