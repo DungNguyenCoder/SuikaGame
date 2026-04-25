@@ -50,7 +50,7 @@ namespace WingmanInspector {
         
         [MenuItem(DisableMenuPath, true)]
         private static bool DisableAssetValidate() {
-            Menu.SetChecked(DisableMenuPath, assetIsDisabled);
+            SetMenuCheckedCompat(DisableMenuPath, assetIsDisabled);
             return true;
         }
 
@@ -219,6 +219,21 @@ namespace WingmanInspector {
                 container.Update();
                 container.InspectorWindow.Repaint();
             }
+        }
+
+        private static void SetMenuCheckedCompat(string menuPath, bool isChecked) {
+            Type menuType = typeof(Editor).Assembly.GetType("UnityEditor.Menu");
+            if (menuType == null) return;
+
+            MethodInfo setCheckedMethod = menuType.GetMethod(
+                "SetChecked",
+                BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic,
+                null,
+                new[] { typeof(string), typeof(bool) },
+                null
+            );
+
+            setCheckedMethod?.Invoke(null, new object[] { menuPath, isChecked });
         }
 
     }
