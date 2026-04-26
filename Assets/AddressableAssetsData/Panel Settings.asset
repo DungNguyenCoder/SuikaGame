@@ -15,7 +15,7 @@ MonoBehaviour:
   rulesEnabled: 1
   allowGroupCreation: 1
   rules:
-  - path: Assets/Panels/(.*)\.prefab
+  - path: Assets/SuikaGame/Panels/(.*)\.prefab
     matchType: 1
     groupName: Panels
     groupTemplate: {fileID: 11400000, guid: 94a97679c2ac5394bb8be1343d7f6d1f, type: 2}
