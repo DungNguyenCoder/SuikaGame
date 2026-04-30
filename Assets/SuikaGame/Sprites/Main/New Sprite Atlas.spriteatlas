@@ -50,6 +50,7 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - 56d7fb6024cb80e4686ebb8db7ae041d: 21300000
     - 321a55807fff26e489317e5d106db9fc: 21300000
     - 7e6423c0b2d10e0438ebf1a9a740a110: 21300000
     - cb28c731ce2218b40b393a98ee019c75: 21300000
@@ -96,6 +97,7 @@ SpriteAtlas:
     - 581274dfe2e2e3d4baae9d158c9bc2cd: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 56d7fb6024cb80e4686ebb8db7ae041d, type: 3}
   - {fileID: 21300000, guid: 321a55807fff26e489317e5d106db9fc, type: 3}
   - {fileID: 21300000, guid: 7e6423c0b2d10e0438ebf1a9a740a110, type: 3}
   - {fileID: 21300000, guid: cb28c731ce2218b40b393a98ee019c75, type: 3}
@@ -141,6 +143,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4d4cf87feab2e494e944e6f3df68c4ca, type: 3}
   - {fileID: 21300000, guid: 581274dfe2e2e3d4baae9d158c9bc2cd, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Popular-Logo-facebook-icon-png
   - Thanh progres2
   - hand
   - destroy1
