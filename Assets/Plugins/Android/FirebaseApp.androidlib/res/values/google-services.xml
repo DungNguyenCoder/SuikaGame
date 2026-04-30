@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id">
+  <string name="gcm_defaultSenderId" translatable="false">942402321637</string>
+  <string name="google_storage_bucket" translatable="false">suika-game-dc623.firebasestorage.app</string>
+  <string name="project_id" translatable="false">suika-game-dc623</string>
+  <string name="google_api_key" translatable="false">AIzaSyA_V3dcgFvsWZrtzZclM2pgwWJX82Al6N0</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA_V3dcgFvsWZrtzZclM2pgwWJX82Al6N0</string>
+  <string name="google_app_id" translatable="false">1:942402321637:android:669bd1303eb1af0929280c</string>
+</resources>

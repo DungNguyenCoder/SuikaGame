@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "942402321637",
+    "project_id": "suika-game-dc623",
+    "storage_bucket": "suika-game-dc623.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942402321637:android:669bd1303eb1af0929280c",
+        "android_client_info": {
+          "package_name": "com.DungNguyen.SuikaGame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_V3dcgFvsWZrtzZclM2pgwWJX82Al6N0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
