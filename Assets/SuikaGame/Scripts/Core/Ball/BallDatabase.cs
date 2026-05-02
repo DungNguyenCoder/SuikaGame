@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Core.Ball
+namespace SuikaGame.Scripts.Core.Ball
 {
     [CreateAssetMenu(menuName = "SuikaGame/Data/Ball Core")]
     public class BallDatabase : ScriptableObject

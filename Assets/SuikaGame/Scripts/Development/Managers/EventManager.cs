@@ -1,4 +1,6 @@
 using System;
+using Cysharp.Threading.Tasks;
+using SuikaGame.Scripts.Core.Enums;
 using SuikaGame.Scripts.Development.Controllers;
 using UnityEngine;
 
@@ -13,5 +15,6 @@ namespace SuikaGame.Scripts.Development.Managers
         public static Action OnLoseLevel;
         public static Action OnRequestPause;
         public static Action OnRequestResume;
+        public static Func<BoosterType, UniTask<bool>> OnRequestUseBooster;
     }
 }

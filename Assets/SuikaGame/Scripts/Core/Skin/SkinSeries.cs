@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Core.Skin
+namespace SuikaGame.Scripts.Core.Skin
 {
     [Serializable]
     public class SkinSeries

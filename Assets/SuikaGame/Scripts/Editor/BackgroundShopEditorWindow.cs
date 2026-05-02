@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Core.Background;
-using Core.Shop;
+using SuikaGame.Scripts.Core.Background;
+using SuikaGame.Scripts.Core.Shop;
 using UnityEditor;
 using UnityEngine;
 

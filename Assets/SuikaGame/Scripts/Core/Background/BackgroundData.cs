@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Core.Background
+namespace SuikaGame.Scripts.Core.Background
 {
     [Serializable]
     public class BackgroundData

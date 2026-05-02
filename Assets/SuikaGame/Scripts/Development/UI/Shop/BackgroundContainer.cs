@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Core.Shop;
+using SuikaGame.Scripts.Core.Shop;
 using SuikaGame.Scripts.Development.LoadSave.Data;
 using UnityEngine;
 

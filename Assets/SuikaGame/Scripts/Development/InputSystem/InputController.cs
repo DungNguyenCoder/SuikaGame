@@ -1,5 +1,5 @@
 using System;
-using Core.Enums;
+using SuikaGame.Scripts.Core.Enums;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

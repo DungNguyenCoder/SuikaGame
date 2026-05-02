@@ -1,6 +1,6 @@
 using System;
 
-namespace Core
+namespace SuikaGame.Scripts.Core.Ball
 {
     [Serializable]
     public class BallData

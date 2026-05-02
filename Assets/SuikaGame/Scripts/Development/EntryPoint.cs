@@ -1,7 +1,8 @@
 using System.Collections.Generic;
-using Core.Ball;
-using Core.Skin;
 using Cysharp.Threading.Tasks;
+using SuikaGame.Scripts.Core.Ball;
+using SuikaGame.Scripts.Core.Enums;
+using SuikaGame.Scripts.Core.Skin;
 using SuikaGame.Scripts.Development.Controllers;
 using SuikaGame.Scripts.Development.InputSystem;
 using SuikaGame.Scripts.Development.LoadSave;
@@ -41,11 +42,13 @@ namespace SuikaGame.Scripts.Development
         private void OnEnable()
         {
             EventManager.OnLoseLevel += HandleLoseLevel;
+            EventManager.OnRequestUseBooster += HandleUseBoosterAsync;
         }
 
         private void OnDisable()
         {
             EventManager.OnLoseLevel -= HandleLoseLevel;
+            EventManager.OnRequestUseBooster -= HandleUseBoosterAsync;
         }
 
         private void OnDestroy()
@@ -63,6 +66,7 @@ namespace SuikaGame.Scripts.Development
         {
             _playerSaveData = await JsonRepository.LoadPlayerProfile();
             SaveRuntimeData.SetPlayer(_playerSaveData);
+            EventManager.OnProfileChanged?.Invoke();
             ApplySelectedSkins();
 
             bool startNewGame = GameLaunchOptions.ConsumeStartNewGameRequest();
@@ -143,6 +147,18 @@ namespace SuikaGame.Scripts.Development
             SaveRuntimeData.SetProgress(_progressSaveData);
             _gameContext.ProgressSaveData = _progressSaveData;
             EventManager.OnScoreChanged?.Invoke(_progressSaveData.CurrentScore, _playerSaveData.HighScore);
+        }
+
+        private UniTask<bool> HandleUseBoosterAsync(BoosterType boosterType)
+        {
+            return boosterType switch
+            {
+                BoosterType.Destruction => ballSpawner.RemoveRandomReleasedBallsAsync(3),
+                BoosterType.Promotion => ballSpawner.PromoteRandomReleasedBallsAsync(2),
+                BoosterType.Biggest => ballSpawner.RemoveBiggestReleasedBallAsync(),
+                BoosterType.Shuffle => ballSpawner.ShuffleReleasedBallsAsync(),
+                _ => UniTask.FromResult(false)
+            };
         }
 
         private void InitStateMachine()

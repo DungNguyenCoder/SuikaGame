@@ -1,4 +1,4 @@
-namespace Core.Enums
+namespace SuikaGame.Scripts.Core.Enums
 {
     public enum InputPlatform
     {

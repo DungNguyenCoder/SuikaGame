@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Core.Background;
+using SuikaGame.Scripts.Core.Background;
 using UnityEngine;
 
-namespace Core.Shop
+namespace SuikaGame.Scripts.Core.Shop
 {
     [CreateAssetMenu(menuName = "SuikaGame/Data/Background Shop")]
     public class BackgroundShopDatabase : ScriptableObject

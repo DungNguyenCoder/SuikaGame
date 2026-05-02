@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Core.Ball;
-using Core.Skin;
+using SuikaGame.Scripts.Core.Ball;
+using SuikaGame.Scripts.Core.Skin;
 using UnityEditor;
 using UnityEngine;
 

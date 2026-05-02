@@ -1,5 +1,5 @@
 using System;
-using Core.Shop;
+using SuikaGame.Scripts.Core.Shop;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

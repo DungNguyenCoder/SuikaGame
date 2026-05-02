@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Core.Shop
+namespace SuikaGame.Scripts.Core.Shop
 {
     [Serializable]
     public class SkinShopItemData

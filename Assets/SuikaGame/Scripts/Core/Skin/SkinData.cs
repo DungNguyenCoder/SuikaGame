@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Core.Skin
+namespace SuikaGame.Scripts.Core.Skin
 {
     [Serializable]
     public class SkinData

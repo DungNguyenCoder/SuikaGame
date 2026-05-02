@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Core.Shop;
 using Cysharp.Threading.Tasks;
+using SuikaGame.Scripts.Core.Shop;
 using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.LoadSave.Data;
 using SuikaGame.Scripts.Development.Managers;

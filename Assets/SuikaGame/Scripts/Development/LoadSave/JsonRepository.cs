@@ -25,14 +25,18 @@ namespace SuikaGame.Scripts.Development.LoadSave
             return SaveData(PlayerProfilePath, data);
         }
 
-        public static UniTask<PlayerSaveData> LoadPlayerProfile()
+        public static async UniTask<PlayerSaveData> LoadPlayerProfile()
         {
             if (!File.Exists(PlayerProfilePath))
             {
-                return UniTask.FromResult(new PlayerSaveData());
+                PlayerSaveData newProfile = new PlayerSaveData();
+                BoosterInventoryService.EnsureInitialized(newProfile);
+                return newProfile;
             }
 
-            return LoadData<PlayerSaveData>(PlayerProfilePath);
+            PlayerSaveData profile = await LoadData<PlayerSaveData>(PlayerProfilePath);
+            BoosterInventoryService.EnsureInitialized(profile);
+            return profile;
         }
 
         public static UniTask SaveGameProgress(ProgressSaveData data)
