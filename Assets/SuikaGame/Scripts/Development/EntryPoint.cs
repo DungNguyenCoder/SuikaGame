@@ -12,6 +12,7 @@ using Development.Managers;
 using Development.Pools;
 using Development.StateMachine;
 using Development.Utils;
+using SuikaGame.Scripts.Development.LoadSave.Data;
 using UnityEngine;
 
 namespace Development
@@ -24,6 +25,7 @@ namespace Development
         [SerializeField] private BallPool ballPool;
         [SerializeField] private InputController inputController;
         [SerializeField] private Cloud cloud;
+        [SerializeField] private GameplayBackground gameplayBackground;
 
         private readonly List<Ball> _releasedBalls = new();
         private GameStateController _gameStateController;
@@ -64,6 +66,7 @@ namespace Development
         {
             _playerSaveData = await JsonRepository.LoadPlayerProfile();
             SaveRuntimeData.SetPlayer(_playerSaveData);
+            ApplySelectedSkins();
 
             bool startNewGame = GameLaunchOptions.ConsumeStartNewGameRequest();
             if (startNewGame)
@@ -86,6 +89,12 @@ namespace Development
             {
                 ApplySavedProgress();
             }
+        }
+
+        private void ApplySelectedSkins()
+        {
+            ballSpawner.SetActiveSkinSeriesID(_playerSaveData.SelectedSkinSeriesId);
+            gameplayBackground.ApplyBackground(_playerSaveData.SelectedBackgroundId);
         }
 
         private void ApplySavedProgress()

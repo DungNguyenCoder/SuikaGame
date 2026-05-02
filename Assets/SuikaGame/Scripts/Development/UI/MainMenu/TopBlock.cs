@@ -72,6 +72,11 @@ namespace Development.UI.MainMenu
         {
             string userName = SaveRuntimeData.Player != null ? SaveRuntimeData.Player.UserName : string.Empty;
             account.text = string.IsNullOrWhiteSpace(userName) ? DefaultUserName : userName.Trim();
+
+            if (coin != null)
+            {
+                coin.text = SaveRuntimeData.Player != null ? SaveRuntimeData.Player.Coin.ToString() : "0";
+            }
         }
 
         private void HandleProfileAvatarChanged(Sprite avatarSprite)

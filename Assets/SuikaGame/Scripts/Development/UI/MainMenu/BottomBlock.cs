@@ -18,7 +18,7 @@ namespace Development.UI.MainMenu
 
         public void OnClickSkin()
         {
-            PanelManager.Instance.OpenPanel(PanelConfig.SKIN_PANEL);
+            PanelManager.Instance.OpenPanel(PanelConfig.SHOP_PANEL);
         }
 
         public void OnClickCheckIn()

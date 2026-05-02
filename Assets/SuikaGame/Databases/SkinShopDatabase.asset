@@ -15,11 +15,26 @@ MonoBehaviour:
   skinDatabase: {fileID: 11400000, guid: a8be227e888f20a489305d0be0af81b1, type: 2}
   items:
   - SkinSeriesID: 1
-    Banner: {fileID: 0}
+    Banner: {fileID: 21300000, guid: 0c14935a5be04b140bad2d835e0b7950, type: 3}
     Price: 0
   - SkinSeriesID: 2
-    Banner: {fileID: 0}
-    Price: 0
+    Banner: {fileID: 21300000, guid: eeff74f24b0fe914e97806c2159ff514, type: 3}
+    Price: 300
   - SkinSeriesID: 3
-    Banner: {fileID: 0}
-    Price: 0
+    Banner: {fileID: 21300000, guid: bbb4751c7ae684f4f9a7eb5a5437fb91, type: 3}
+    Price: 600
+  - SkinSeriesID: 4
+    Banner: {fileID: 21300000, guid: ed2118b948cd54e46871321320142ed7, type: 3}
+    Price: 900
+  - SkinSeriesID: 5
+    Banner: {fileID: 21300000, guid: 52222d6a2b7b2d548af4dc653966c697, type: 3}
+    Price: 1200
+  - SkinSeriesID: 6
+    Banner: {fileID: 21300000, guid: b23825119ef2f1345b9c3bb7fd3cbffc, type: 3}
+    Price: 1500
+  - SkinSeriesID: 7
+    Banner: {fileID: 21300000, guid: 878f671c702da0f4dae088c25080040d, type: 3}
+    Price: 1800
+  - SkinSeriesID: 8
+    Banner: {fileID: 21300000, guid: 577556b4de09f8641b3c2d2a55016232, type: 3}
+    Price: 2100

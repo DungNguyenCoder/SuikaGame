@@ -170,22 +170,22 @@ MonoBehaviour:
   - ID: 8
     skinDatas:
     - BallID: 1
-      Sprite: {fileID: 21300000, guid: edd2d6d44943a8b48beae995f54c8e2c, type: 3}
+      Sprite: {fileID: 21300000, guid: 8e70f69b7b3480e4790481986d9d0abd, type: 3}
     - BallID: 2
-      Sprite: {fileID: 21300000, guid: d990c8d3ece3cc44e8ec5ab16538fb43, type: 3}
+      Sprite: {fileID: 21300000, guid: 181701376df4a5e47b6cffad276638e1, type: 3}
     - BallID: 3
-      Sprite: {fileID: 21300000, guid: d7da9560d944a8c47814776b3091ae06, type: 3}
+      Sprite: {fileID: 21300000, guid: 9c51e76e5a7a06649a795312dbd70de0, type: 3}
     - BallID: 4
-      Sprite: {fileID: 21300000, guid: ae38c699668172249ae529b1e19bf52d, type: 3}
+      Sprite: {fileID: 21300000, guid: 5311e23273c2528489260be26d51b7ba, type: 3}
     - BallID: 5
-      Sprite: {fileID: 21300000, guid: f713cd25f53530144a2db772aef1d1a5, type: 3}
+      Sprite: {fileID: 21300000, guid: b100a3693af39194da93e69f9e896cd1, type: 3}
     - BallID: 6
-      Sprite: {fileID: 21300000, guid: c9cbffa1fb512d04cb84be832e944cdb, type: 3}
+      Sprite: {fileID: 21300000, guid: 9536c03563dc92a4aab8bb3fe29733b5, type: 3}
     - BallID: 7
-      Sprite: {fileID: 21300000, guid: 2c5fe47c9c409c648aa32705b23c3358, type: 3}
+      Sprite: {fileID: 21300000, guid: bc0f08b7ee035e04f8ca84ea8224e13d, type: 3}
     - BallID: 8
-      Sprite: {fileID: 21300000, guid: 896b4091f2b5c8a4bac8a14c439d365a, type: 3}
+      Sprite: {fileID: 21300000, guid: 93ebc5057079d004481118368bb291ba, type: 3}
     - BallID: 9
-      Sprite: {fileID: 21300000, guid: 8e2e9fd8780187b4da5b2a3cb68010de, type: 3}
+      Sprite: {fileID: 21300000, guid: bb2416124bef62a449b83bab881ab7ea, type: 3}
     - BallID: 10
-      Sprite: {fileID: 21300000, guid: 50cb90c818dee2a43899a258e3db0505, type: 3}
+      Sprite: {fileID: 21300000, guid: a91fbfca54e1cb049a96fb8069068c2e, type: 3}
