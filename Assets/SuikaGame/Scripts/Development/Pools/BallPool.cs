@@ -34,6 +34,8 @@ namespace SuikaGame.Scripts.Development.Pools
 
         public Ball GetBall()
         {
+            RemoveDestroyedBalls();
+
             foreach (Ball tile in _tilePool)
             {
                 if (!tile.gameObject.activeInHierarchy)
@@ -47,6 +49,8 @@ namespace SuikaGame.Scripts.Development.Pools
 
         public void ReturnPool(Ball tile)
         {
+            if (tile == null) return;
+
             tile.PrepareForPool();
             tile.gameObject.SetActive(false);
             tile.transform.SetParent(transform);
@@ -55,6 +59,8 @@ namespace SuikaGame.Scripts.Development.Pools
         public void FillReleasedBalls(List<Ball> output)
         {
             output.Clear();
+            RemoveDestroyedBalls();
+
             foreach (Ball tile in _tilePool)
             {
                 if (!tile.gameObject.activeInHierarchy) continue;
@@ -65,11 +71,24 @@ namespace SuikaGame.Scripts.Development.Pools
 
         public void ReturnAllReleasedBalls()
         {
+            RemoveDestroyedBalls();
+
             foreach (Ball tile in _tilePool)
             {
                 if (!tile.gameObject.activeInHierarchy) continue;
                 if (!tile.IsReleased) continue;
                 ReturnPool(tile);
+            }
+        }
+
+        private void RemoveDestroyedBalls()
+        {
+            for (int i = _tilePool.Count - 1; i >= 0; i--)
+            {
+                if (_tilePool[i] == null)
+                {
+                    _tilePool.RemoveAt(i);
+                }
             }
         }
     }

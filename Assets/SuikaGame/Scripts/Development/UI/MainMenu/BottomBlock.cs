@@ -6,16 +6,6 @@ namespace SuikaGame.Scripts.Development.UI.MainMenu
 {
     public class BottomBlock : MonoBehaviour
     {
-        public void OnClickHome()
-        {
-            
-        }
-
-        public void OnClickShop()
-        {
-            PanelManager.Instance.OpenPanel(PanelConfig.SHOP_PANEL);
-        }
-
         public void OnClickSkin()
         {
             PanelManager.Instance.OpenPanel(PanelConfig.SHOP_PANEL);
