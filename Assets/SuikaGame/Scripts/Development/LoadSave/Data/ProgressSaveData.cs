@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.Serialization;
 
-namespace Development.LoadSave.Data
+namespace SuikaGame.Scripts.Development.LoadSave.Data
 {
     [Serializable]
     public class ProgressSaveData

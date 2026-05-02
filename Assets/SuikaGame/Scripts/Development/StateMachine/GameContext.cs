@@ -1,6 +1,6 @@
-using Development.LoadSave.Data;
+using SuikaGame.Scripts.Development.LoadSave.Data;
 
-namespace Development.StateMachine
+namespace SuikaGame.Scripts.Development.StateMachine
 {
     public class GameContext
     {

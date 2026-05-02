@@ -2,7 +2,7 @@ using LitMotion;
 using TMPro;
 using UnityEngine;
 
-namespace Development.Animations
+namespace SuikaGame.Scripts.Development.Animations
 {
     public class ScoreTextAnimation : MonoBehaviour
     {

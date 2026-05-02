@@ -1,10 +1,10 @@
-using Development.Managers;
-using Development.Utils;
-using Development.Animations;
 using JSAM;
+using SuikaGame.Scripts.Development.Animations;
+using SuikaGame.Scripts.Development.Managers;
+using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 
-namespace Development.UI.Popup
+namespace SuikaGame.Scripts.Development.UI.Popup
 {
     public class SettingPanel : Panel
     {

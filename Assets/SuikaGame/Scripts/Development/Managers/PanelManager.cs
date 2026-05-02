@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Development.UI;
-using Development.Utils;
+using SuikaGame.Scripts.Development.UI;
+using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace Development.Managers
+namespace SuikaGame.Scripts.Development.Managers
 {
     public class PanelManager : Singleton<PanelManager>
     {

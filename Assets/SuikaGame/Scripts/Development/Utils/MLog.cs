@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Development.Utils
+namespace SuikaGame.Scripts.Development.Utils
 {
     public static class MLog
     {

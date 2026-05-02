@@ -1,4 +1,4 @@
-namespace Development.Utils
+namespace SuikaGame.Scripts.Development.Utils
 {
     public class GameLaunchOptions
     {

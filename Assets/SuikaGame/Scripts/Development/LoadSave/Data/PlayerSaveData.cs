@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Development.LoadSave.Data
+namespace SuikaGame.Scripts.Development.LoadSave.Data
 {
     [Serializable]
     public class PlayerSaveData

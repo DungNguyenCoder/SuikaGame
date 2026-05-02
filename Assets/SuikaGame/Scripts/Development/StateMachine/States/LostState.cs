@@ -1,8 +1,7 @@
 using System;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Development.StateMachine.States
+namespace SuikaGame.Scripts.Development.StateMachine.States
 {
     public class LostState : BaseGameState, IDisposable
     {

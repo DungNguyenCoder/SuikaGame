@@ -1,8 +1,8 @@
 using System;
-using Development.Controllers;
+using SuikaGame.Scripts.Development.Controllers;
 using UnityEngine;
 
-namespace Development.Managers
+namespace SuikaGame.Scripts.Development.Managers
 {
     public static class EventManager
     {

@@ -1,7 +1,7 @@
-using Development.Managers;
+using SuikaGame.Scripts.Development.Managers;
 using UnityEngine;
 
-namespace Development.UI
+namespace SuikaGame.Scripts.Development.UI
 {
     public class Panel : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using System;
 using System.Globalization;
-using Development.LoadSave.Data;
+using SuikaGame.Scripts.Development.LoadSave.Data;
 
 namespace SuikaGame.Scripts.Development.Utils
 {

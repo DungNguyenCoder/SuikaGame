@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
-using Development.Controllers;
+using SuikaGame.Scripts.Development.Controllers;
 using UnityEngine;
 
-namespace Development.Pools
+namespace SuikaGame.Scripts.Development.Pools
 {
     public class BallPool : MonoBehaviour
     {

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Development.LoadSave.Data
+namespace SuikaGame.Scripts.Development.LoadSave.Data
 {
     [Serializable]
     public class BallSaveData

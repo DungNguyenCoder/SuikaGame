@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Development.StateMachine.States;
-using Development.Utils;
+using SuikaGame.Scripts.Development.StateMachine.States;
+using SuikaGame.Scripts.Development.Utils;
 
-namespace Development.StateMachine
+namespace SuikaGame.Scripts.Development.StateMachine
 {
     public class GameStateController
     {

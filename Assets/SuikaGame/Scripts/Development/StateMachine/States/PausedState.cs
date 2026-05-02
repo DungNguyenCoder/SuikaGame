@@ -1,9 +1,9 @@
 using System;
-using Development.Managers;
-using Development.Utils;
+using SuikaGame.Scripts.Development.Managers;
+using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 
-namespace Development.StateMachine.States
+namespace SuikaGame.Scripts.Development.StateMachine.States
 {
     public class PausedState : BaseGameState, IDisposable
     {

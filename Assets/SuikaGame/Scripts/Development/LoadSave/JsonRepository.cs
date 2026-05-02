@@ -1,11 +1,11 @@
 using System;
 using System.IO;
 using Cysharp.Threading.Tasks;
-using Development.LoadSave.Data;
-using Development.Utils;
+using SuikaGame.Scripts.Development.LoadSave.Data;
+using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 
-namespace Development.LoadSave
+namespace SuikaGame.Scripts.Development.LoadSave
 {
     public static class JsonRepository
     {

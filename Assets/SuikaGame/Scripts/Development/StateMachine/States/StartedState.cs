@@ -1,9 +1,9 @@
 using System;
-using Development.Controllers;
-using Development.Managers;
+using SuikaGame.Scripts.Development.Controllers;
+using SuikaGame.Scripts.Development.Managers;
 using UnityEngine;
 
-namespace Development.StateMachine.States
+namespace SuikaGame.Scripts.Development.StateMachine.States
 {
     public class StartedState : BaseGameState, IDisposable
     {

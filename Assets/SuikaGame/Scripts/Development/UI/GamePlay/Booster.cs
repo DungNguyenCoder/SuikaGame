@@ -1,7 +1,6 @@
-using TMPro;
 using UnityEngine;
 
-namespace Development.UI.GamePlay
+namespace SuikaGame.Scripts.Development.UI.GamePlay
 {
     public class Booster : MonoBehaviour
     {

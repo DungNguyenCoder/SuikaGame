@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Core.Shop;
-using Development.LoadSave.Data;
+using SuikaGame.Scripts.Development.LoadSave.Data;
 using UnityEngine;
 
 namespace SuikaGame.Scripts.Development.UI.Shop

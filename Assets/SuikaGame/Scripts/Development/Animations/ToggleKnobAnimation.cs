@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Development.Animations
+namespace SuikaGame.Scripts.Development.Animations
 {
     public class ToggleKnobAnimation : MonoBehaviour
     {

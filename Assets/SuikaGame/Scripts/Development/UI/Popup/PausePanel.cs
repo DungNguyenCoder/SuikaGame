@@ -1,9 +1,9 @@
-using Development.Managers;
-using Development.Utils;
+using SuikaGame.Scripts.Development.Managers;
+using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Development.UI.Popup
+namespace SuikaGame.Scripts.Development.UI.Popup
 {
     public class PausePanel : Panel
     {

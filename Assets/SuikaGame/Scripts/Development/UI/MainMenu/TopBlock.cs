@@ -1,14 +1,13 @@
-using Development.Managers;
-using Development.LoadSave;
-using Development.UI.Popup;
-using Development.Utils;
 using Cysharp.Threading.Tasks;
+using SuikaGame.Scripts.Development.LoadSave;
+using SuikaGame.Scripts.Development.Managers;
 using SuikaGame.Scripts.Development.UI.Popup;
+using SuikaGame.Scripts.Development.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Development.UI.MainMenu
+namespace SuikaGame.Scripts.Development.UI.MainMenu
 {
     public class TopBlock : MonoBehaviour
     {

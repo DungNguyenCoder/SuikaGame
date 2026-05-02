@@ -1,6 +1,6 @@
 using System;
 
-namespace Development.StateMachine.States
+namespace SuikaGame.Scripts.Development.StateMachine.States
 {
     public class LoadedState : BaseGameState, IDisposable
     {

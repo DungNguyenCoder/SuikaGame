@@ -1,6 +1,6 @@
-using Development.LoadSave.Data;
+using SuikaGame.Scripts.Development.LoadSave.Data;
 
-namespace Development.LoadSave
+namespace SuikaGame.Scripts.Development.LoadSave
 {
     public static class SaveRuntimeData
     {

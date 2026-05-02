@@ -1,21 +1,18 @@
-using System;
 using System.Collections.Generic;
-using Core;
 using Core.Ball;
 using Core.Skin;
 using Cysharp.Threading.Tasks;
-using Development.Controllers;
-using Development.InputSystem;
-using Development.LoadSave;
-using Development.LoadSave.Data;
-using Development.Managers;
-using Development.Pools;
-using Development.StateMachine;
-using Development.Utils;
+using SuikaGame.Scripts.Development.Controllers;
+using SuikaGame.Scripts.Development.InputSystem;
+using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.LoadSave.Data;
+using SuikaGame.Scripts.Development.Managers;
+using SuikaGame.Scripts.Development.Pools;
+using SuikaGame.Scripts.Development.StateMachine;
+using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 
-namespace Development
+namespace SuikaGame.Scripts.Development
 {
     public class EntryPoint : MonoBehaviour
     {

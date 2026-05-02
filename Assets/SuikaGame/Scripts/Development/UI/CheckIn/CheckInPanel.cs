@@ -1,11 +1,8 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Development.LoadSave;
-using Development.LoadSave.Data;
-using Development.Managers;
-using Development.UI;
-using Development.UI.Popup;
-using Development.Utils;
+using SuikaGame.Scripts.Development.LoadSave;
+using SuikaGame.Scripts.Development.LoadSave.Data;
+using SuikaGame.Scripts.Development.Managers;
 using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 

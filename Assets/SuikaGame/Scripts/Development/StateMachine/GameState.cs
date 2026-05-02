@@ -1,4 +1,4 @@
-namespace Development.StateMachine
+namespace SuikaGame.Scripts.Development.StateMachine
 {
     public enum GameState
     {

@@ -1,8 +1,8 @@
-using Development.Managers;
-using Development.Utils;
+using SuikaGame.Scripts.Development.Managers;
+using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 
-namespace Development.UI.MainMenu
+namespace SuikaGame.Scripts.Development.UI.MainMenu
 {
     public class BottomBlock : MonoBehaviour
     {

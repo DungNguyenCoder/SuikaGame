@@ -1,7 +1,7 @@
 using System;
 using Stateless;
 
-namespace Development.StateMachine
+namespace SuikaGame.Scripts.Development.StateMachine
 {
     public abstract class State<TState, Trigger, TShared>
         where TState : Enum

@@ -1,7 +1,7 @@
+using SuikaGame.Scripts.Development.Managers;
 using UnityEngine;
-using Development.Managers;
 
-namespace Development.Controllers
+namespace SuikaGame.Scripts.Development.Controllers
 {
     [RequireComponent(typeof(Collider2D))]
     public class LoseTrigger : MonoBehaviour

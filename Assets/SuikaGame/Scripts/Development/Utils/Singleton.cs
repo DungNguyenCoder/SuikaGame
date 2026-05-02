@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Development.Utils
+namespace SuikaGame.Scripts.Development.Utils
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {

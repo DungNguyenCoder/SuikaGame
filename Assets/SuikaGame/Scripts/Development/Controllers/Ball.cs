@@ -1,9 +1,9 @@
 using Core;
 using Core.Skin;
-using Development.Managers;
+using SuikaGame.Scripts.Development.Managers;
 using UnityEngine;
 
-namespace Development.Controllers
+namespace SuikaGame.Scripts.Development.Controllers
 {
     public class Ball : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using Core.Enums;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Development.InputSystem
+namespace SuikaGame.Scripts.Development.InputSystem
 {
     public class InputController : MonoBehaviour
     {

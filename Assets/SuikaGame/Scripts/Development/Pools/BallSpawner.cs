@@ -4,12 +4,12 @@ using Core;
 using Core.Ball;
 using Core.Skin;
 using Cysharp.Threading.Tasks;
-using Development.Controllers;
-using Development.LoadSave.Data;
-using Development.Managers;
+using SuikaGame.Scripts.Development.Controllers;
+using SuikaGame.Scripts.Development.LoadSave.Data;
+using SuikaGame.Scripts.Development.Managers;
 using UnityEngine;
 
-namespace Development.Pools
+namespace SuikaGame.Scripts.Development.Pools
 {
     public class BallSpawner : MonoBehaviour
     {

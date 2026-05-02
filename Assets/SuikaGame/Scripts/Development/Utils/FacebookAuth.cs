@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using Facebook.Unity;
 using UnityEngine;
 
-namespace Development
+namespace SuikaGame.Scripts.Development.Utils
 {
     public class FacebookAuth : MonoBehaviour
     {

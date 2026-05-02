@@ -1,9 +1,9 @@
-using Development.Animations;
-using Development.Managers;
+using SuikaGame.Scripts.Development.Animations;
+using SuikaGame.Scripts.Development.Managers;
 using TMPro;
 using UnityEngine;
 
-namespace Development.UI.GamePlay
+namespace SuikaGame.Scripts.Development.UI.GamePlay
 {
     public class GamePlayUI : Panel
     {

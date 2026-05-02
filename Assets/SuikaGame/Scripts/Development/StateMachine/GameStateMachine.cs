@@ -1,6 +1,6 @@
 using Stateless;
 
-namespace Development.StateMachine
+namespace SuikaGame.Scripts.Development.StateMachine
 {
     public class GameStateMachine : StateMachine<GameState, GameTrigger>
     {

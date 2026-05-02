@@ -1,11 +1,11 @@
 using Cysharp.Threading.Tasks;
-using Development.LoadSave;
-using Development.Managers;
-using Development.Utils;
+using SuikaGame.Scripts.Development.LoadSave;
+using SuikaGame.Scripts.Development.Managers;
+using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Development.UI.MainMenu
+namespace SuikaGame.Scripts.Development.UI.MainMenu
 {
     public class ContentBlock : MonoBehaviour
     {

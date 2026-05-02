@@ -2,7 +2,7 @@ using LitMotion;
 using LitMotion.Adapters;
 using UnityEngine;
 
-namespace Development.Utils
+namespace SuikaGame.Scripts.Development.Utils
 {
     public static class LitMotionPrewarm
     {
