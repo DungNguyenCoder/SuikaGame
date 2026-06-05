@@ -1,5 +1,6 @@
 using JSAM;
 using SuikaGame.Scripts.Development.Animations;
+using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.Managers;
 using TMPro;
 using UnityEngine;
@@ -15,16 +16,14 @@ namespace SuikaGame.Scripts.Development.UI.GamePlay
         private void OnEnable()
         {
             EventManager.OnScoreChanged += HandleScoreChanged;
+            EventManager.OnProfileChanged += RefreshCoinDisplay;
+            RefreshCoinDisplay();
         }
 
         private void OnDisable()
         {
             EventManager.OnScoreChanged -= HandleScoreChanged;
-        }
-        
-        public void OnClickAddCoin()
-        {
-            AudioManager.PlaySound(AudioLibrarySounds._Click);
+            EventManager.OnProfileChanged -= RefreshCoinDisplay;
         }
         
         public void OnClickPause()
@@ -36,6 +35,18 @@ namespace SuikaGame.Scripts.Development.UI.GamePlay
         private void HandleScoreChanged(int currentScore, int bestScore)
         {
             scoreAnimation.UpdateScore(currentScore);
+        }
+
+        private void RefreshCoinDisplay()
+        {
+            if (coin == null)
+            {
+                return;
+            }
+
+            coin.text = SaveRuntimeData.Player != null
+                ? SaveRuntimeData.Player.Coin.ToString()
+                : "0";
         }
     }
 }

@@ -18,11 +18,6 @@ namespace SuikaGame.Scripts.Development.UI.MainMenu
             PlayClickSound();
             PanelManager.Instance.OpenPanel(PanelConfig.CHECKIN_PANEL);
         }
-        
-        public void OnClickLeaderboard()
-        {
-            PlayClickSound();
-        }
 
         private static void PlayClickSound()
         {

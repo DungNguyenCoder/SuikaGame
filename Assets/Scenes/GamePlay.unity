@@ -1215,7 +1215,7 @@ MonoBehaviour:
   promotionPeakScale: 1.18
   spawnBallID: 1
   randomMinBallID: 1
-  randomMaxBallID: 4
+  randomMaxBallID: 9
   activeSkinSeriesID: 1
 --- !u!4 &1610687617
 Transform:

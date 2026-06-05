@@ -1,5 +1,7 @@
 using System;
-using UnityEngine.SceneManagement;
+using SuikaGame.Scripts.Development.Managers;
+using SuikaGame.Scripts.Development.Utils;
+using UnityEngine;
 
 namespace SuikaGame.Scripts.Development.StateMachine.States
 {
@@ -13,7 +15,8 @@ namespace SuikaGame.Scripts.Development.StateMachine.States
 
         private void OnEntry()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 0f;
+            PanelManager.Instance.OpenPanel(PanelConfig.LOSE_PANEL);
         }
 
         public void Dispose()

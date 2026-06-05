@@ -9,5 +9,6 @@ namespace SuikaGame.Scripts.Development.Utils
         public static string CHECKIN_PANEL = "CheckInPanel";
         public static string SHOP_PANEL = "ShopPanel";
         public static string SKIN_PANEL = "SkinPanel";
+        public static string LOSE_PANEL = "LosePanel";
     }
 }

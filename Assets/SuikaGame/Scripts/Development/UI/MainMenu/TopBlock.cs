@@ -36,11 +36,6 @@ namespace SuikaGame.Scripts.Development.UI.MainMenu
             EventManager.OnProfileAvatarChanged -= HandleProfileAvatarChanged;
         }
 
-        public void OnClickAddCoin()
-        {
-            PlayClickSound();
-        }
-
         public void OnClickModifyAccount()
         {
             PlayClickSound();

@@ -82,6 +82,14 @@ namespace SuikaGame.Scripts.Development
             _progressSaveData = hasGameProgress
                 ? await JsonRepository.LoadGameProgress()
                 : new ProgressSaveData();
+
+            if (_progressSaveData.IsGameOver)
+            {
+                JsonRepository.DeleteGameProgress();
+                _progressSaveData = new ProgressSaveData();
+                hasGameProgress = false;
+            }
+
             SaveRuntimeData.SetProgress(_progressSaveData);
 
             _gameContext.PlayerSaveData = _playerSaveData;
@@ -122,6 +130,11 @@ namespace SuikaGame.Scripts.Development
 
         private async UniTask SaveRuntimeState()
         {
+            if (_progressSaveData != null && _progressSaveData.IsGameOver)
+            {
+                return;
+            }
+
             CaptureProgressData();
             await JsonRepository.SavePlayerProfile(_playerSaveData);
             await JsonRepository.SaveGameProgress(_progressSaveData);
@@ -144,12 +157,15 @@ namespace SuikaGame.Scripts.Development
 
         private void HandleLoseLevel()
         {
+            if (_progressSaveData != null)
+            {
+                _progressSaveData.IsGameOver = true;
+                SaveRuntimeData.SetProgress(_progressSaveData);
+                _gameContext.ProgressSaveData = _progressSaveData;
+            }
+
             _ = JsonRepository.SavePlayerProfile(_playerSaveData);
             JsonRepository.DeleteGameProgress();
-            _progressSaveData = new ProgressSaveData();
-            SaveRuntimeData.SetProgress(_progressSaveData);
-            _gameContext.ProgressSaveData = _progressSaveData;
-            EventManager.OnScoreChanged?.Invoke(_progressSaveData.CurrentScore, _playerSaveData.HighScore);
         }
 
         private UniTask<bool> HandleUseBoosterAsync(BoosterType boosterType)
