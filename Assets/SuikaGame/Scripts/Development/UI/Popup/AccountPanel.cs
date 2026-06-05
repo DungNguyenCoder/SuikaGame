@@ -16,7 +16,6 @@ namespace SuikaGame.Scripts.Development.UI.Popup
     public class AccountPanel : Panel
     {
         [SerializeField] private TMP_InputField accountInputField;
-        [SerializeField] private FacebookAuth facebookAuth;
         [SerializeField] private RectTransform avatarContent;
         [SerializeField] private RectTransform selectedBorder;
         [SerializeField] private Image selectedBorderImage;
@@ -24,11 +23,8 @@ namespace SuikaGame.Scripts.Development.UI.Popup
         [SerializeField] private Vector2 selectedBorderPadding = new Vector2(10f, 10f);
         [SerializeField] private float selectedHideOffset = 6f;
         [SerializeField] private Transform panel;
-        [SerializeField] private TMP_Text connectText;
 
         private const string DefaultUserName = "Guest";
-        private const string FacebookLoginButtonText = "Connect";
-        private const string FacebookLogoutButtonText = "Logout";
         private const float AvatarScrollTopPosition = 1f;
         private const float ViewportEdgePadding = 0.01f;
 
@@ -41,7 +37,6 @@ namespace SuikaGame.Scripts.Development.UI.Popup
         private string _workingAvatarPath = string.Empty;
         private int _enableVersion;
         private bool _isResettingAvatarScroll;
-        private bool _isFacebookActionRunning;
 
         public override void Open()
         {
@@ -54,7 +49,6 @@ namespace SuikaGame.Scripts.Development.UI.Popup
             _enableVersion++;
             panel.localScale = Vector3.zero;
             selectedBorderImage.raycastTarget = false;
-            RefreshFacebookButtonText();
             CacheAvatarOptions();
             ResetAvatarScrollToTop();
             avatarScrollRect.onValueChanged.AddListener(HandleScrollValueChanged);
@@ -64,7 +58,6 @@ namespace SuikaGame.Scripts.Development.UI.Popup
         private void OnDisable()
         {
             _enableVersion++;
-            _isFacebookActionRunning = false;
             avatarScrollRect.onValueChanged.RemoveListener(HandleScrollValueChanged);
             avatarScrollRect.StopMovement();
             avatarScrollRect.velocity = Vector2.zero;
@@ -76,12 +69,6 @@ namespace SuikaGame.Scripts.Development.UI.Popup
             SaveChangesAsync().Forget();
         }
 
-        public void OnClickFacebookLogin()
-        {
-            PlayClickSound();
-            ToggleFacebookConnectionAsync(_enableVersion).Forget();
-        }
-        
         public void OnClickClose()
         {
             PlayClickSound();
@@ -150,41 +137,6 @@ namespace SuikaGame.Scripts.Development.UI.Popup
             _workingAvatarPath = _initialAvatarPath;
             accountInputField.text = _initialUserName;
             SelectAvatarByPath(_workingAvatarPath, true);
-        }
-
-        private async UniTaskVoid ToggleFacebookConnectionAsync(int enableVersion)
-        {
-            if (_isFacebookActionRunning)
-            {
-                return;
-            }
-
-            _isFacebookActionRunning = true;
-            try
-            {
-                if (facebookAuth.IsLoggedIn)
-                {
-                    SetFacebookButtonText(false);
-                    accountInputField.text = DefaultUserName;
-                    facebookAuth.Logout();
-                    return;
-                }
-
-                SetFacebookButtonText(true);
-                (bool success, string userName) = await facebookAuth.TryGetFacebookUserNameAsync();
-                if (success && CanApplyPanelRefresh(enableVersion))
-                {
-                    accountInputField.text = NormalizeUserName(userName);
-                }
-            }
-            finally
-            {
-                _isFacebookActionRunning = false;
-                if (CanApplyPanelRefresh(enableVersion))
-                {
-                    RefreshFacebookButtonText();
-                }
-            }
         }
 
         private void CacheAvatarOptions()
@@ -354,16 +306,6 @@ namespace SuikaGame.Scripts.Development.UI.Popup
             avatarContent.anchoredPosition = new Vector2(avatarContent.anchoredPosition.x, 0f);
             avatarScrollRect.velocity = Vector2.zero;
             _isResettingAvatarScroll = false;
-        }
-
-        private void RefreshFacebookButtonText()
-        {
-            SetFacebookButtonText(facebookAuth.IsLoggedIn);
-        }
-
-        private void SetFacebookButtonText(bool isConnected)
-        {
-            connectText.text = isConnected ? FacebookLogoutButtonText : FacebookLoginButtonText;
         }
 
         private void RefreshSelectedBorder(RectTransform target)
