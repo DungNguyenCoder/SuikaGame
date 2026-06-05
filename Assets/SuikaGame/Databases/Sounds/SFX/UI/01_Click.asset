@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   safeName: 
   presetDescription: 
-  files: []
+  files:
+  - {fileID: 8300000, guid: 09277ccd71619fa449b524cd700bacba, type: 3}
   neverRepeat: 0
   loopStart: 0
   loopEnd: 0

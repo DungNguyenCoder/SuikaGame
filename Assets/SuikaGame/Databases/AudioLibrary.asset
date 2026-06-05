@@ -19,7 +19,15 @@ MonoBehaviour:
   - 
   Sounds:
   - {fileID: 11400000, guid: 76fd4c5e84cd58843b77b74bf3a29699, type: 2}
-  Music: []
+  - {fileID: 11400000, guid: 822db57e48011754a8369000bfc74e6c, type: 2}
+  - {fileID: 11400000, guid: a475a5fc2d569ec4b9a4b088b9db0531, type: 2}
+  - {fileID: 11400000, guid: e502939550563ee448b678e164de352a, type: 2}
+  - {fileID: 11400000, guid: e7c433aba0ee72f4aa396ee5e7576330, type: 2}
+  - {fileID: 11400000, guid: 9863bf9d4ce430842afcf40d91f41516, type: 2}
+  Music:
+  - {fileID: 11400000, guid: 8c307fab826577b41a89c4db161bb194, type: 2}
+  - {fileID: 11400000, guid: 4662f0e99ba67e143afebe5d743fdc04, type: 2}
+  - {fileID: 11400000, guid: 41872a9a0648d0a4f94a7387b739477c, type: 2}
   useCustomNames: 1
   generatedName: AudioLibrary
   musicEnum: AudioLibraryMusic
@@ -32,13 +40,21 @@ MonoBehaviour:
   soundNamespaceGenerated: 
   soundCategoriesToList:
   - name: GamePlay
-    files: []
+    files:
+    - {fileID: 11400000, guid: e502939550563ee448b678e164de352a, type: 2}
+    - {fileID: 11400000, guid: e7c433aba0ee72f4aa396ee5e7576330, type: 2}
+    - {fileID: 11400000, guid: 9863bf9d4ce430842afcf40d91f41516, type: 2}
     foldout: 1
   - name: UI
     files:
     - {fileID: 11400000, guid: 76fd4c5e84cd58843b77b74bf3a29699, type: 2}
+    - {fileID: 11400000, guid: 822db57e48011754a8369000bfc74e6c, type: 2}
+    - {fileID: 11400000, guid: a475a5fc2d569ec4b9a4b088b9db0531, type: 2}
     foldout: 1
   musicCategoriesToList:
   - name: 
-    files: []
+    files:
+    - {fileID: 11400000, guid: 8c307fab826577b41a89c4db161bb194, type: 2}
+    - {fileID: 11400000, guid: 4662f0e99ba67e143afebe5d743fdc04, type: 2}
+    - {fileID: 11400000, guid: 41872a9a0648d0a4f94a7387b739477c, type: 2}
     foldout: 1

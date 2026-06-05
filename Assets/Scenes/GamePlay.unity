@@ -1204,6 +1204,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dynamicRoot: {fileID: 713805293}
   spawnCooldown: 0.5
+  shuffleRespawnDelay: 0.2
+  shuffleSpawnInterval: 0.06
+  shuffleFallHeight: 4
+  shuffleMinWidth: 4
+  shuffleVerticalSpacing: 0.35
+  shuffleMergeUnlockDelay: 0.6
+  destroyAnimationDuration: 0.18
+  promotionAnimationDuration: 0.24
+  promotionPeakScale: 1.18
   spawnBallID: 1
   randomMinBallID: 1
   randomMaxBallID: 4
@@ -1498,7 +1507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preloadedLibraries:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ad3f2031650c59f479c87dc2ee40e88c, type: 2}
 --- !u!4 &2071049315
 Transform:
   m_ObjectHideFlags: 0

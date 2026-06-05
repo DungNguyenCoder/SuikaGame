@@ -1,5 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
+using JSAM;
 using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.LoadSave.Data;
 using SuikaGame.Scripts.Development.Managers;
@@ -25,11 +26,13 @@ namespace SuikaGame.Scripts.Development.UI.CheckIn
         public override void Open()
         {
             base.Open();
+            AudioManager.PlaySound(AudioLibrarySounds._Popup);
             LoadAndRefreshAsync().Forget();
         }
 
         public void OnClickClose()
         {
+            PlayClickSound();
             PanelManager.Instance.ClosePanel(PanelConfig.CHECKIN_PANEL);
         }
 
@@ -64,12 +67,15 @@ namespace SuikaGame.Scripts.Development.UI.CheckIn
                 return;
             }
 
+            PlayClickSound();
+
             DailyCheckInBlock block = FindBlock(dayIndex);
 
             _isClaiming = true;
             try
             {
                 DailyCheckInService.ClaimToday(_playerData, block.RewardAmount);
+                AudioManager.PlaySound(AudioLibrarySounds._CoinSound);
                 SaveRuntimeData.SetPlayer(_playerData);
                 await JsonRepository.SavePlayerProfile(_playerData);
 
@@ -132,6 +138,11 @@ namespace SuikaGame.Scripts.Development.UI.CheckIn
             }
 
             return null;
+        }
+
+        private static void PlayClickSound()
+        {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
         }
     }
 }

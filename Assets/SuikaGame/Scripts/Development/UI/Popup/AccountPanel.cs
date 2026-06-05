@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Cysharp.Threading.Tasks;
+using JSAM;
 using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.LoadSave.Data;
 using SuikaGame.Scripts.Development.Managers;
@@ -42,6 +43,12 @@ namespace SuikaGame.Scripts.Development.UI.Popup
         private bool _isResettingAvatarScroll;
         private bool _isFacebookActionRunning;
 
+        public override void Open()
+        {
+            base.Open();
+            AudioManager.PlaySound(AudioLibrarySounds._Popup);
+        }
+
         private void OnEnable()
         {
             _enableVersion++;
@@ -65,16 +72,19 @@ namespace SuikaGame.Scripts.Development.UI.Popup
 
         public void OnClickSaveChange()
         {
+            PlayClickSound();
             SaveChangesAsync().Forget();
         }
 
         public void OnClickFacebookLogin()
         {
+            PlayClickSound();
             ToggleFacebookConnectionAsync(_enableVersion).Forget();
         }
         
         public void OnClickClose()
         {
+            PlayClickSound();
             RevertWorkingChanges();
             Close();
         }
@@ -212,6 +222,7 @@ namespace SuikaGame.Scripts.Development.UI.Popup
 
         private void OnAvatarClicked(AvatarOption option)
         {
+            PlayClickSound();
             _workingAvatarPath = option.Path;
             RefreshSelectedBorder(option.RectTransform);
         }
@@ -443,6 +454,11 @@ namespace SuikaGame.Scripts.Development.UI.Popup
             }
 
             return builder.ToString().Normalize(NormalizationForm.FormC);
+        }
+
+        private static void PlayClickSound()
+        {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
         }
 
         private sealed class AvatarOption

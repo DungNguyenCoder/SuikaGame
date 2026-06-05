@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using JSAM;
 using SuikaGame.Scripts.Core.Ball;
 using SuikaGame.Scripts.Core.Enums;
 using SuikaGame.Scripts.Core.Skin;
@@ -64,6 +65,8 @@ namespace SuikaGame.Scripts.Development
 
         private async UniTaskVoid StartAsync()
         {
+            await UniTask.NextFrame();
+            AudioPlayback.PlayExclusiveMusic(AudioLibraryMusic.Gameplay);
             _playerSaveData = await JsonRepository.LoadPlayerProfile();
             SaveRuntimeData.SetPlayer(_playerSaveData);
             EventManager.OnProfileChanged?.Invoke();

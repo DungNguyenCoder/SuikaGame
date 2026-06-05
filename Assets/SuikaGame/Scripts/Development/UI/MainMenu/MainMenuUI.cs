@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using JSAM;
 using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.LoadSave.Data;
 using SuikaGame.Scripts.Development.Managers;
@@ -17,6 +18,18 @@ namespace SuikaGame.Scripts.Development.UI.MainMenu
 
         private void Start()
         {
+            StartMainMenuAsync().Forget();
+        }
+
+        private async UniTaskVoid StartMainMenuAsync()
+        {
+            await UniTask.NextFrame();
+            if (!isActiveAndEnabled)
+            {
+                return;
+            }
+
+            AudioPlayback.PlayExclusiveMusic(AudioLibraryMusic.MainMenu);
             PromptDailyCheckInAsync().Forget();
         }
 

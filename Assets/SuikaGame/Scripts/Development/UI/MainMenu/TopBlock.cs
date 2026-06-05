@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using JSAM;
 using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.Managers;
 using SuikaGame.Scripts.Development.UI.Popup;
@@ -37,17 +38,24 @@ namespace SuikaGame.Scripts.Development.UI.MainMenu
 
         public void OnClickAddCoin()
         {
-            
+            PlayClickSound();
         }
 
         public void OnClickModifyAccount()
         {
+            PlayClickSound();
             PanelManager.Instance.OpenPanel(PanelConfig.ACCOUNT_PANEL);
         }
         
         public void OnClickSetting()
         {
+            PlayClickSound();
             PanelManager.Instance.OpenPanel(PanelConfig.SETTING_PANEL);
+        }
+
+        private static void PlayClickSound()
+        {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
         }
 
         private async UniTaskVoid EnsureProfileLoadedAndRefresh()

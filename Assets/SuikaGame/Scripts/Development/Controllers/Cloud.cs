@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using JSAM;
 using SuikaGame.Scripts.Development.InputSystem;
 using SuikaGame.Scripts.Development.LoadSave.Data;
 using SuikaGame.Scripts.Development.Pools;
@@ -100,6 +101,7 @@ namespace SuikaGame.Scripts.Development.Controllers
             _isHandlingBall = true;
             try
             {
+                AudioManager.PlaySound(AudioLibrarySounds._Drop);
                 _ball = await _ballSpawner.ReleaseAndRespawn(_ball, ballPos);
             }
             finally

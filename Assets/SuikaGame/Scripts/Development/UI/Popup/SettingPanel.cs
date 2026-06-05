@@ -18,6 +18,12 @@ namespace SuikaGame.Scripts.Development.UI.Popup
 
         private bool IsVibrationEnabled =>
             PlayerPrefs.GetInt(GameConfig.VIBRATION_KEY, 1) == 1;
+
+        public override void Open()
+        {
+            base.Open();
+            AudioManager.PlaySound(AudioLibrarySounds._Popup);
+        }
         
         private void OnEnable()
         {

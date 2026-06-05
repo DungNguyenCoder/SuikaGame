@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using JSAM;
 using SuikaGame.Scripts.Core.Enums;
 using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.LoadSave.Data;
@@ -31,21 +32,25 @@ namespace SuikaGame.Scripts.Development.UI.GamePlay
 
         public void OnClickDestruction()
         {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
             UseBoosterAsync(BoosterType.Destruction).Forget();
         }
 
         public void OnClickPromotion()
         {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
             UseBoosterAsync(BoosterType.Promotion).Forget();
         }
 
         public void OnClickBiggest()
         {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
             UseBoosterAsync(BoosterType.Biggest).Forget();
         }
 
         public void OnClickShuffle()
         {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
             UseBoosterAsync(BoosterType.Shuffle).Forget();
         }
 

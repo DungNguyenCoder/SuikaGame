@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using JSAM;
 using SuikaGame.Scripts.Core.Shop;
 using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.LoadSave.Data;
@@ -15,38 +16,66 @@ namespace SuikaGame.Scripts.Development.UI.Shop
         [Header("Data")]
         [SerializeField] private SkinShopDatabase skinShopDatabase;
         [SerializeField] private BackgroundShopDatabase backgroundShopDatabase;
+        [SerializeField] private BoosterShopDatabase boosterShopDatabase;
 
         [Header("UI")]
         [SerializeField] private TMP_Text coinAmount;
         [SerializeField] private ObjectContainer objectContainer;
         [SerializeField] private BackgroundContainer backgroundContainer;
+        [SerializeField] private BoosterContainer boosterContainer;
         [SerializeField] private RectTransform selectedChecker;
 
+        private enum ShopTab
+        {
+            Object,
+            Background,
+            Item
+        }
+
         private PlayerSaveData _playerData;
-        private bool _isShowingObjectContainer = true;
+        private ShopTab _currentTab = ShopTab.Object;
 
         public override void Open()
         {
             base.Open();
+            AudioPlayback.PlayExclusiveMusic(AudioLibraryMusic.Shop);
+            AudioManager.PlaySound(AudioLibrarySounds._Popup);
             LoadAndBuildAsync().Forget();
+        }
+
+        public override void Close()
+        {
+            base.Close();
+            AudioPlayback.PlayExclusiveMusic(AudioLibraryMusic.MainMenu);
         }
 
         public void OnClickObjectTab()
         {
-            SetContainerVisible(true, false);
-            _isShowingObjectContainer = true;
+            PlayClickSound();
+            SetContainerVisible(true, false, false);
+            _currentTab = ShopTab.Object;
             MoveCheckerToCurrentSelection();
         }
 
         public void OnClickBackgroundTab()
         {
-            SetContainerVisible(false, true);
-            _isShowingObjectContainer = false;
+            PlayClickSound();
+            SetContainerVisible(false, true, false);
+            _currentTab = ShopTab.Background;
             MoveCheckerToCurrentSelection();
+        }
+
+        public void OnClickItemTab()
+        {
+            PlayClickSound();
+            SetContainerVisible(false, false, true);
+            _currentTab = ShopTab.Item;
+            DetachSelectedChecker();
         }
 
         public void OnClickClose()
         {
+            PlayClickSound();
             PanelManager.Instance.ClosePanel(PanelConfig.SHOP_PANEL);
         }
 
@@ -61,6 +90,7 @@ namespace SuikaGame.Scripts.Development.UI.Shop
             DetachSelectedChecker();
             objectContainer.Build(skinShopDatabase, _playerData, HandleObjectSelected);
             backgroundContainer.Build(backgroundShopDatabase, _playerData, HandleBackgroundSelected);
+            boosterContainer.Build(boosterShopDatabase, _playerData, HandleBoosterPurchased);
 
             changed |= objectContainer.EnsureFreeItemsPurchased(_playerData);
             changed |= backgroundContainer.EnsureFreeItemsPurchased(_playerData);
@@ -79,6 +109,7 @@ namespace SuikaGame.Scripts.Development.UI.Shop
             coinAmount.text = _playerData.Coin.ToString();
             objectContainer.Refresh(_playerData, HandleObjectSelected);
             backgroundContainer.Refresh(_playerData, HandleBackgroundSelected);
+            boosterContainer.Refresh(_playerData);
             MoveCheckerToCurrentSelection();
         }
 
@@ -98,6 +129,11 @@ namespace SuikaGame.Scripts.Development.UI.Shop
             }
         }
 
+        private void HandleBoosterPurchased()
+        {
+            SaveAndRefreshAsync().Forget();
+        }
+
         private async UniTaskVoid SaveAndRefreshAsync()
         {
             NormalizePlayerData(_playerData);
@@ -107,21 +143,28 @@ namespace SuikaGame.Scripts.Development.UI.Shop
             Refresh();
         }
 
-        private void SetContainerVisible(bool showObject, bool showBackground)
+        private void SetContainerVisible(bool showObject, bool showBackground, bool showItem)
         {
             objectContainer.SetVisible(showObject);
             backgroundContainer.SetVisible(showBackground);
+            boosterContainer.SetVisible(showItem);
         }
 
         private void MoveCheckerToCurrentSelection()
         {
-            if (_isShowingObjectContainer)
+            if (_currentTab == ShopTab.Object)
             {
                 objectContainer.MoveCheckerToSelectedBlock(selectedChecker, _playerData.SelectedSkinSeriesId);
                 return;
             }
 
-            backgroundContainer.MoveCheckerToSelectedBlock(selectedChecker, _playerData.SelectedBackgroundId);
+            if (_currentTab == ShopTab.Background)
+            {
+                backgroundContainer.MoveCheckerToSelectedBlock(selectedChecker, _playerData.SelectedBackgroundId);
+                return;
+            }
+
+            DetachSelectedChecker();
         }
 
         private void DetachSelectedChecker()
@@ -136,6 +179,8 @@ namespace SuikaGame.Scripts.Development.UI.Shop
 
             changed |= AddIfMissing(playerData.PurchasedSkinSeriesIds, playerData.SelectedSkinSeriesId);
             changed |= AddIfMissing(playerData.PurchasedBackgroundIds, playerData.SelectedBackgroundId);
+            changed |= playerData.BoosterInventory == null;
+            BoosterInventoryService.EnsureInitialized(playerData);
             return changed;
         }
 
@@ -148,6 +193,11 @@ namespace SuikaGame.Scripts.Development.UI.Shop
 
             ids.Add(id);
             return true;
+        }
+
+        private static void PlayClickSound()
+        {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
         }
     }
 }

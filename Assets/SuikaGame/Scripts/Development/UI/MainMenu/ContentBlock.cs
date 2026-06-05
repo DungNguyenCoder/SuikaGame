@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using JSAM;
 using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.Managers;
 using SuikaGame.Scripts.Development.Utils;
@@ -11,11 +12,13 @@ namespace SuikaGame.Scripts.Development.UI.MainMenu
     {
         public void OnClickPlayGame()
         {
+            PlayClickSound();
             HandlePlayOrNewGameAsync(false).Forget();
         }
 
         public void OnClickNewGame()
         {
+            PlayClickSound();
             HandlePlayOrNewGameAsync(true).Forget();
         }
 
@@ -39,6 +42,11 @@ namespace SuikaGame.Scripts.Development.UI.MainMenu
             }
 
             SceneManager.LoadScene(GameConfig.GAMEPLAY_SCENE);
+        }
+
+        private static void PlayClickSound()
+        {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
         }
     }
 }

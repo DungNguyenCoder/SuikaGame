@@ -1,4 +1,5 @@
 using System;
+using JSAM;
 using SuikaGame.Scripts.Core.Shop;
 using TMPro;
 using UnityEngine;
@@ -27,6 +28,7 @@ namespace SuikaGame.Scripts.Development.UI.Shop
 
         public void OnClick()
         {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
             _onClick?.Invoke(_backgroundId);
         }
     }

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using JSAM;
 using SuikaGame.Scripts.Development.LoadSave;
 using SuikaGame.Scripts.Development.Managers;
 using SuikaGame.Scripts.Development.Utils;
@@ -14,6 +15,12 @@ namespace SuikaGame.Scripts.Development.UI.Popup
         [SerializeField] private Transform startButtonTransform;
         [SerializeField] private Transform goBackButtonTransform;
 
+        public override void Open()
+        {
+            base.Open();
+            AudioManager.PlaySound(AudioLibrarySounds._Popup);
+        }
+
         private void OnEnable()
         {
             titleTransform.localScale = Vector3.zero;
@@ -24,11 +31,13 @@ namespace SuikaGame.Scripts.Development.UI.Popup
         
         public void OnClickStartGame()
         {
+            PlayClickSound();
             HandleStartGameAsync().Forget();
         }
 
         public void OnClickGoBack()
         {
+            PlayClickSound();
             if (GameLaunchOptions.GetTutorialEntryPoint() == GameLaunchOptions.TutorialEntryPoint.MainMenuFirstPlay)
             {
                 GameLaunchOptions.ConsumeTutorialEntryPoint();
@@ -61,6 +70,11 @@ namespace SuikaGame.Scripts.Development.UI.Popup
 
             Time.timeScale = 1f;
             PanelManager.Instance.ClosePanel(PanelConfig.TUTORIAL_PANEL);
+        }
+
+        private static void PlayClickSound()
+        {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
         }
     }
 }

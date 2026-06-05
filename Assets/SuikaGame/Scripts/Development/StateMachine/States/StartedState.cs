@@ -1,4 +1,5 @@
 using System;
+using JSAM;
 using SuikaGame.Scripts.Development.Controllers;
 using SuikaGame.Scripts.Development.Managers;
 using UnityEngine;
@@ -39,6 +40,7 @@ namespace SuikaGame.Scripts.Development.StateMachine.States
 
         private void HandleSameIdCollision(Ball firstBall, Ball secondBall)
         {
+            AudioManager.PlaySound(AudioLibrarySounds._Merge);
             int mergedBallId = firstBall.ID;
             if (mergedBallId >= MaxBallId)
             {

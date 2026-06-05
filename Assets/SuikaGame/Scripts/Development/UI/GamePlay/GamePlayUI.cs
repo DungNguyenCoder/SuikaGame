@@ -1,3 +1,4 @@
+using JSAM;
 using SuikaGame.Scripts.Development.Animations;
 using SuikaGame.Scripts.Development.Managers;
 using TMPro;
@@ -23,11 +24,12 @@ namespace SuikaGame.Scripts.Development.UI.GamePlay
         
         public void OnClickAddCoin()
         {
-
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
         }
         
         public void OnClickPause()
         {
+            AudioManager.PlaySound(AudioLibrarySounds._Click);
             EventManager.OnRequestPause?.Invoke();
         }
 
