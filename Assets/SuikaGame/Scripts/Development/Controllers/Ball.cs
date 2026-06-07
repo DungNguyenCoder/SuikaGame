@@ -3,6 +3,7 @@ using SuikaGame.Scripts.Core.Ball;
 using SuikaGame.Scripts.Core.Skin;
 using SuikaGame.Scripts.Development.Animations;
 using SuikaGame.Scripts.Development.Managers;
+using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 
 namespace SuikaGame.Scripts.Development.Controllers
@@ -135,6 +136,7 @@ namespace SuikaGame.Scripts.Development.Controllers
             if (ID != otherBall.ID) return;
             if (!TryLockMergeWith(otherBall)) return;
 
+            VibrationService.Vibrate();
             EventManager.SameIdCollision?.Invoke(this, otherBall);
         }
     }

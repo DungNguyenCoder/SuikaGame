@@ -1,4 +1,5 @@
 using SuikaGame.Scripts.Development.Managers;
+using SuikaGame.Scripts.Development.Utils;
 using UnityEngine;
 
 namespace SuikaGame.Scripts.Development.Controllers
@@ -22,6 +23,7 @@ namespace SuikaGame.Scripts.Development.Controllers
             if (ball.LoseTriggerTouchCount < 2) return;
 
             _hasLost = true;
+            VibrationService.Vibrate();
             EventManager.OnLoseLevel?.Invoke();
             Debug.Log("Lost");
         }

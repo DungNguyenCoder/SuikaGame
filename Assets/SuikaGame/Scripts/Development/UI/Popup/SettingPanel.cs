@@ -16,8 +16,7 @@ namespace SuikaGame.Scripts.Development.UI.Popup
 
         private bool _isVibrationEnabled;
 
-        private bool IsVibrationEnabled =>
-            PlayerPrefs.GetInt(GameConfig.VIBRATION_KEY, 1) == 1;
+        private bool IsVibrationEnabled => VibrationService.IsEnabled;
 
         public override void Open()
         {
@@ -61,11 +60,15 @@ namespace SuikaGame.Scripts.Development.UI.Popup
         public void OnClickVibration()
         {
             _isVibrationEnabled = !_isVibrationEnabled;
-            PlayerPrefs.SetInt(GameConfig.VIBRATION_KEY, _isVibrationEnabled ? 1 : 0);
-            PlayerPrefs.Save();
+            VibrationService.SetEnabled(_isVibrationEnabled);
 
             PlayToggleSound();
             RefreshToggleVisualState(false);
+
+            if (_isVibrationEnabled)
+            {
+                VibrationService.Vibrate();
+            }
         }
 
         public void OnClickClose()
